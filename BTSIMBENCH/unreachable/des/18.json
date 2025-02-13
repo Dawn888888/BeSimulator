@@ -1,0 +1,41 @@
+{
+    "id": 18,
+    "name": "DisposeOfFireworks",
+    "bt_task": "The robot task is to dispose of fireworks safely. The behavior logic of a robot should be as follows. There are two fireworks located on the floor in the garden area. And an ashcan is near it. Robot needs to pick up each firework and place it inside the ashcan. The goal is to ensure that all fireworks are securely placed inside the ashcan.",
+    "bt_xml_path": "./BTGenDataset/good/xml/18.xml",
+    "action_node": {
+        "Move_to_firework1": {
+            "description": "The robot moves to the location of firework1.",            
+            "precondition": "None"
+        },
+        "Pick_up_firework1": {
+            "description": "The robot grasps and lifts the firework1 with its a gripper.",            
+            "precondition": "None"
+        },
+        "Move_to_ashcan": {
+            "description": "The robot moves to the location of the ashcan.",            
+            "precondition": "None"
+        },
+        "Place_firework1_in_ashcan": {
+            "description": "The robot extends its gripper, places the firework1 that is held by its gripper inside the ashcan and then retracts gripper.",            
+            "precondition": "None"
+        },
+        "Move_to_firework2": {
+            "description": "The robot moves to the location of the firework2.",            
+            "precondition": "None"
+        },
+        "Pick_up_firework2": {
+            "description": "The robot grasps and lifts the firework2 with its gripper.",            
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "Is_near_firework1?": "Check if the robot is near the location of the first firework. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "firework1_in_gripper?": "Check if the first firework is in the robot's gripper.",
+        "Is_near_ashcan?": "Check if the robot is near the location of the ashcan. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "firework1_in_ashcan?": "Check if the first firework is securely inside the ashcan.",
+        "Is_near_firework2?": "Check if the robot is near the location of the second firework. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "firework2_in_gripper?": "Check if the second firework is in the robot's gripper.",
+        "firework2_in_ashcan?": "Check if the second firework is securely inside the ashcan."
+    }
+}

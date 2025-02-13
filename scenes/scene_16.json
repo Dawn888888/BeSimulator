@@ -1,0 +1,105 @@
+[
+    {
+        "agents": {
+            "heating_robot": {
+                "type": "service_robot",
+                "position": [
+                    2.0,
+                    2.0,
+                    1.0
+                ],
+                "size": 1.2,
+                "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                "gripper_contact_range": 1.0,
+                "gripper_content":[]
+            }
+        },
+        "objects": {
+            "countertop":
+            {
+                "type": "wooden_countertop",
+                "position": [
+                    3.0,
+                    3.0,
+                    0.8
+                ],
+                "size": 0.8
+            },
+            "carton": {
+                "type": "carton",
+                "position": [
+                    3.0,
+                    3.0,
+                    0.8
+                ],
+                "size": 0.2,
+                "setting": "This carton is with a lid",
+                "open_close_state": "Closed",
+                "content":[["chicken_soup"]]
+            },
+            "bowl": {
+                "type": "ceramic_bowl",
+                "position": [
+                    2.9,
+                    3.0,
+                    0.8
+                ],
+                "size": 0.15,
+                "content":[]
+            },
+            "microwave": {
+                "type": "microwave",
+                "position": [
+                    4.0,
+                    3.0,
+                    0.8
+                ],
+                "size": 0.6,
+                "setting": "This microwave has a door. This microwave could be started to heat things inside it by setting.",
+                "door_status": "Closed",
+                "power_off": "off",
+                "content":[]
+            },
+            "chicken_soup": {
+                "type": "chicken_soup",
+                "position": [
+                    3.0,
+                    3.0,
+                    0.8
+                ],
+                "size": 0.2,
+                "heated": false
+            }
+        },
+        "relationship": {},
+        "environment": {
+            "type": "kitchen"
+        },
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",            
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "open_close_state": "the state of the carton, e.g., 'Open' or 'Closed'",
+            "content": "the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "door_status": "the status of the door, e.g., 'Open' or 'Closed'",
+            "power_off": "the work status of the microwave, e.g., 'on' or 'off'",
+            "heated": "whether the chicken soup is heated or not, e.g., True or False"
+        },
+        "state_type":{
+            "type": "string",
+            "position": "float list",
+            "size": "float",  
+            "setting": "string",
+            "gripper_contact_range": "float",          
+            "gripper_content": "string list",
+            "open_close_state": "string",
+            "content": "string list",
+            "door_status": "string",
+            "power_off": "string",
+            "heated": "bool"
+        }
+    }
+]

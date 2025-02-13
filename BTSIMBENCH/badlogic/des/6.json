@@ -1,0 +1,59 @@
+{
+    "id": 6,
+    "name": "BoxFoodAfterDinner",
+    "bt_task": "The robot task is to box leftover kabobs after dinner and store them in an electric refrigerator. The behavior logic of a robot should be as follows. There are two cooked kabobs, each placed on separate plates on the breakfast table. And a fresh preservation box is also on the breakfast table. And the box is closed nitially. The robot needs to place two kabobs into the fresh preservation box, then store the box in the electric refrigerator located in the kitchen and finally close the refrigerator. The goal is to ensure that the two kabobs are inside the fresh preservation box, the box is inside the refrigerator, and the refrigerator is closed.",
+    "bt_xml_path": "./BTGenDataset/good/xml/6.xml",
+    "action_node": {
+        "Move_to_breakfast_table": {
+            "description": "The robot moves to the location of the breakfast table.",            
+            "precondition": "None"
+        },
+        "Grasp_kabob_1": {
+            "description": "The robot grasps and lifts the kabob_1.",            
+            "precondition": "None"
+        },
+        "Grasp_kabob_2": {
+            "description": "The robot grasps and lifts the kabob_2.",            
+            "precondition": "None"
+        },
+        "Place_kabob_1_into_box": {
+            "description": "The robot places the kabob_1 in its gripper into the open preservation box.",            
+            "precondition": "None"
+        },
+        "Place_kabob_2_into_box": {
+            "description": "The robot places the kabob_2 in its gripper into the open preservation box.",            
+            "precondition": "None"
+        },
+        "Grasp_preservation_box":{
+            "description": "The robot grasps and lifts the preservation box.",            
+            "precondition": "None"
+        },
+        "Move_to_refrigerator": {
+            "description": "The robot moves to the location of the refrigerator.",            
+            "precondition": "None"
+        },
+        "Open_refrigerator": {
+            "description": "The robot pulls the door by its one gripper to open the refrigerator.",            
+            "precondition": "None"
+        },
+        "Place_preservation_box_in_refrigerator": {
+            "description": "The robot extends its gripper and places the held preservation box into the refrigerator. Then, the robot releases and retracts its gripper.",            
+            "precondition": "None"
+        },
+        "Close_refrigerator": {
+            "description": "The robot pushes the door by its one gripper to close the door of the refrigerator.",           
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "IsNearBreakfastTable?": "Check if the robot's current position is near the breakfast table. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Kabob_1_in_gripper?": "Check if the kabob_1 is in the robot's gripper.",
+        "Kabob_2_in_gripper?": "Check if the kabob_2 is in the robot's gripper.",
+        "kabob_1_in_box?": "Check if the kabob_1 is inside the preservation box.",
+        "kabob_2_in_box?": "Check if the kabob_2 is inside the preservation box.",
+        "IsNearRefrigerator?": "Check if the robot's current position is near the refrigerator. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Refrigerator_opened?": "Check if the refrigerator is open.",
+        "Preservation_box_in_refrigerator?": "Check if the preservation box is placed inside the refrigerator.",
+        "Refrigerator_closed?": "Check if the refrigerator is closed."
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "id": 8,
+    "name": "BringGlassToRecycle",
+    "bt_task": "The robot task is to bring a glass to a recycling bin. The behavior logic of a robot should be as follows. The water glass is initially on the desk in the kitchen. The recycling bin is on the floor in the kitchen. The robot, which is also in the kitchen, needs to pick up the glass and place it inside the recycling bin. The goal is to ensure that the glass is inside the recycling bin.",
+    "bt_xml_path": "./BTGenDataset/good/xml/8.xml",
+    "action_node": {
+        "Move_to_desk": {
+            "description": "The robot moves to the location of the desk.",            
+            "precondition": "None"
+        },
+        "Grasp_glass": {
+            "description": "The robot uses its one gripper to grasp and lifts the glass.",            
+            "precondition": "None"
+        },
+        "Move_to_recycling_bin": {
+            "description": "The robot moves to the location of the recycling bin.",            
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "is_near_desk?": "Check if the robot is near the desk. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "glass_in_gripper?": "Check if the glass is in the robot's gripper.",
+        "is_near_recycling_bin?": "Check if the robot is near the recycling bin. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "glass_in_bin?": "Check if the glass has been released into the recycling bin."
+    }
+}

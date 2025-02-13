@@ -1,0 +1,149 @@
+[
+    {
+        "agent_task": "Agent moves to the location (3.0, 7.0)",
+        "initial_states": {
+            "agents": {
+                "chef_robot":{
+                    "type": "kitchen_robot",
+                    "position": [
+                        0.2,
+                        3.0
+                    ]
+                }
+            }
+        },
+        "action_description": {
+            "MoveTo": "Agent reaches specified location."
+        },
+        "end_states": {
+            "agents": {
+                "chef_robot": {
+                    "type": "kitchen_robot",
+                    "position": [
+                        3.0,
+                        7.0
+                    ]
+                }
+            }
+        },
+        "output": {
+            "eval": "success",
+            "reason": "*We think the key of task to complete is that the agent must moves to and reach the location successfully. *The robot is at the location (3.0, 7.0) and the task is completed."
+        }
+    },
+    {
+        "agent_task": "Agent moves to the location (3.0, 7.0)",
+        "initial_states": {
+            "agents": {
+                "chef_robot": {
+                    "type": "kitchen_robot",
+                    "position": [
+                        0.5,
+                        4.0
+                    ]
+                }
+            }
+        },
+        "action_description": {
+            "MoveTo": "Agent reaches specified location."
+        },
+        "end_states": {
+            "agents": {
+                "chef_robot": {
+                    "type": "kitchen_robot",
+                    "position": [
+                        3.0,
+                        6.0
+                    ]
+                }
+            }
+        },
+        "output": {
+            "eval": "failure",
+            "reason": "*We think the key of task to complete is that agents must moves to and reach the location successfully. *The robot is not at the location (3.0, 7.0), so the task is not completed."
+        }
+    },
+    {
+        "agent_task": "Equipped with firefighting equipment, the robot is designed to swiftly assess the fire's location and intensity. It will navigate through the kitchen environment autonomously, identifying potential hazards and prioritizing actions to suppress the fire effectively.",
+        "initial_states": {
+            "agents": {
+                "robot": {
+                    "type": "kitchen_robot",
+                    "position": [
+                        0.5,
+                        4.0,
+                        0.0
+                    ],
+                    "gripper_content":[["FireExtinguisher"]]
+                }
+            },
+            "objects": {
+                "fire": {
+                    "type": "fire",
+                    "position": [
+                        5.0,
+                        5.0,
+                        0
+                    ],
+                    "size": 1.5,
+                    "fire_state": "on"
+                },
+                "fire_extinguisher": {
+                    "type": "fire_extinguisher",
+                    "position": [
+                        0.4,
+                        4.0,
+                        0.5
+                    ],
+                    "size": 0.5,
+                    "container_state": "full"
+                }
+            }
+        },
+        "action_description": {
+            "DetectFireLocation": "Robot detects the location and state of the fire.",
+            "MovetoFireLocation": "Robot moves to the location of the fire in order to extinguish it.",
+            "TurnOnExtinguisher": "Robot activates the fire extinguisher.",
+            "ExtinguishFire": "Robot applies the fire extinguisher in its gripper to extinguish the fire until it is completely put out."
+        },
+        "end_states": {
+            "agents": {
+                "robot": {
+                    "type": "kitchen_robot",
+                    "position": [
+                        4.0,
+                        5.0,
+                        0
+                    ],
+                    "gripper_content":[["FireExtinguisher"]]
+                }
+            },
+            "objects": {
+                "fire": {
+                    "type": "fire",
+                    "position": [
+                        5.0,
+                        5.0,
+                        0
+                    ],
+                    "size": 1.5,
+                    "fire_state": "off"
+                },
+                "fire_extinguisher": {
+                    "type": "fire_extinguisher",
+                    "position": [
+                        4.0,
+                        5.0,
+                        0.1
+                    ],
+                    "size": 0.5,
+                    "container_state": "empty"
+                }
+            }
+        },
+        "output": {
+            "eval": "success",
+            "reason": "*We think the key of task to complete is that the robot must use its equipped fire extinguisher to extinguish the fire. *The robot has moved to the vicinity of the fire location and successfully used its fire extinguisher to put out the fire. The 'container_state' is now 'empty' and the 'fire_state' is now 'off'."
+        }
+    }
+]

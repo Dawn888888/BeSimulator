@@ -1,0 +1,25 @@
+<Sequence class="SequenceNode" instance_name="Replace_Broken_Light_Bulb">
+    <Sequence class="SequenceNode" instance_name="Detach_broken_light_bulb">
+        <Fallback class="FallbackNode" instance_name="Move_to_coffee_table">
+            <Condition class="Is_near_coffee_table?" instance_name="Is_near_coffee_table?"></Condition>
+            <Action class="Move_to_coffee_table" instance_name="Move_to_coffee_table"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Detach_broken_light_bulb">
+            <Condition class="Reading_lamp_is_attached_with_nothing?" instance_name="Reading_lamp_is_attached_with_nothing?"></Condition>
+            <Sequence class="SequenceNode" instance_name="Detach_broken_light_bulb">
+                <Action class="Detach_broken_light_bulb" instance_name="Detach_broken_light_bulb"></Action>
+                <Action class="Place_broken_light_bulb_on_table" instance_name="Place_broken_light_bulb_on_table"></Action>
+            </Sequence>
+        </Fallback>
+    </Sequence>
+    <Fallback class="FallbackNode" instance_name="Attach_new_light_bulb">
+        <Condition class="New_light_bulb_is_attached_to_reading_lamp?" instance_name="New_light_bulb_is_attached_to_reading_lamp?"></Condition>
+        <Sequence class="SequenceNode" instance_name="Attach_new_light_bulb">
+            <Fallback class="FallbackNode" instance_name="Grasp_new_light_bulb">
+                <Condition class="new_light_bulb_in_gripper?" instance_name="new_light_bulb_in_gripper?"></Condition>
+                <Action class="Grasp_new_light_bulb" instance_name="Grasp_new_light_bulb"></Action>
+            </Fallback>
+            <Action class="Attach_new_light_bulb" instance_name="Attach_new_light_bulb"></Action>
+        </Sequence>
+    </Fallback>
+</Sequence>

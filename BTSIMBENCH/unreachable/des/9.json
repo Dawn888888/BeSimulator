@@ -1,0 +1,44 @@
+{
+    "id": 9,
+    "name": "CarryWater",
+    "bt_task": "The robot task is to carry water from a sink to a backpack. The behavior logic of a robot should be as follows. The water bottle is initially on a shelf in the bathroom, and the sink also located in the bathroom contains water. The backpack is on the floor in the kitchen. The robot needs to fill the water bottle with water from the sink, move the water bottle to the kitchen and place it next to the backpack. The goal is to ensure that the water bottle is filled with water, placed next to the backpack on the kitchen floor.",
+    "bt_xml_path": "./BTGenDataset/good/xml/9.xml",
+    "action_node": {
+        "Move_to_bathroom_shelf": {
+            "description": "The robot moves to the location of the bathroom_shelf.",
+            "precondition": "None"
+        },
+        "Grasp_water_bottle": {
+            "description": "The robot extends its one gripper, grasps the water bottle and retrieves it out from the shelf.",
+            "precondition": "None"
+        },
+        "Move_to_sink": {
+            "description": "The robot moves to the location of the sink.",
+            "precondition": "None"
+        },
+        "Fill_water_bottle": {
+            "description": "The robot turns on the sink switch, fills the bottle which is in its gripper with the flowing water until the bottle is full, and then robot turns off the sink switch.",
+            "precondition": "None"
+        },
+        "Move_to_kitchen": {
+            "description": "The robot moves to the location of the kitchen.",
+            "precondition": "None"
+        },
+        "Move_to_backpack":{
+            "description": "The robot moves to the location of the backpack.",
+            "precondition": "None"
+        },
+        "Place_water_bottle_inside_backpack": {
+            "description": "The robot places the filled water bottle which is in its gripper inside the backpack which on the kitchen floor, and releases its gripper",
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "is_near_bathroom_shelf?": "Check if the robot is near the bathroom shelf. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "water_bottle_in_gripper?": "Check if the water bottle is in the robot's gripper.",
+        "is_near_sink?": "Check if the robot is near the bathroom sink. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "bottle_is_filled_water?": "Check if the water bottle is now filled with water.",
+        "is_at_kitchen?": "Check if the robot is near the kitchen. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "is_near_backpack?": "Check if the robot is near the backpack on the floor in the kitchen. Require a distance less than the gripper contact range of the robot to be considered near."
+    }
+}

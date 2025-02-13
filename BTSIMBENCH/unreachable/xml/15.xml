@@ -1,0 +1,61 @@
+<Sequence class="SequenceNode" instance_name="Cook_Chicken_Brisket_Plate">
+    <Sequence class="SequenceNode" instance_name="Retrieve_and_Cook_Brisket">
+        <Sequence class="SequenceNode" instance_name="Retrieve_Chicken_Brisket">
+            <Fallback class="FallbackNode" instance_name="Move_to_Refrigerator">
+                <Condition class="Robot_near_Refrigerator?" instance_name="Robot_near_Refrigerator?"></Condition>
+                <Action class="Move_to_Refrigerator" instance_name="Move_to_Refrigerator"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Open_Refrigerator">
+                <Condition class="Refrigerator_door_opened?" instance_name="Refrigerator_door_opened?"></Condition>
+                <Action class="Open_Refrigerator" instance_name="Open_Refrigerator"></Action>
+            </Fallback>            
+            <Action class="Take_Chicken_Brisket_from_Refrigerator" instance_name="Take_Chicken_Brisket_from_Refrigerator"></Action>
+            <Fallback class="FallbackNode" instance_name="Close_Refrigerator">
+                <Condition class="Refrigerator_door_closed?" instance_name="Refrigerator_door_closed?"></Condition>
+                <Action class="Close_Refrigerator" instance_name="Close_Refrigerator"></Action>
+            </Fallback>
+        </Sequence>
+        <Sequence class="SequenceNode" instance_name="Prepare_Chicken_Brisket_Oven">
+            <Fallback class="FallbackNode" instance_name="Move_to_Oven">
+                <Condition class="Robot_near_Oven?" instance_name="Robot_near_Oven?"></Condition>
+                <Action class="Move_to_Oven" instance_name="Move_to_Oven"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Open_Oven">
+                <Condition class="Oven_door_opened?" instance_name="Oven_door_opened?"></Condition>
+                <Action class="Open_Oven" instance_name="Open_Oven"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Place_Chicken_Brisket_in_Oven">
+                <Condition class="Chicken_Brisket_in_Oven?" instance_name="Chicken_Brisket_in_Oven?"></Condition>
+                <Action class="Place_Chicken_Brisket_in_Oven" instance_name="Place_Chicken_Brisket_in_Oven"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Close_Oven">
+                <Condition class="Oven_door_closed?" instance_name="Oven_door_closed?"></Condition>
+                <Action class="Close_Oven" instance_name="Close_Oven"></Action>
+            </Fallback>
+        </Sequence>
+    </Sequence>
+    <Fallback class="FallbackNode" instance_name="Cook_Chicken_Brisket">
+        <Condition class="Chicken_Brisket_is_OK?" instance_name="Chicken_Brisket_is_OK?"></Condition>
+        <Sequence class="SequenceNode" instance_name="Cook_Place_Chicken">
+            <Fallback class="FallbackNode" instance_name="Move_to_Plate">
+                <Condition class="Robot_near_Plate?" instance_name="Robot_near_Plate?"></Condition>
+                <Action class="Move_to_Plate" instance_name="Move_to_Plate"></Action>
+            </Fallback>
+            <Action class="Grasp_Plate" instance_name="Grasp_Plate"></Action>
+            <Fallback class="FallbackNode" instance_name="Move_to_Oven">
+                <Condition class="Robot_near_Oven?" instance_name="Robot_near_Oven?"></Condition>
+                <Action class="Move_to_Oven" instance_name="Move_to_Oven"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Open_Oven">
+                <Condition class="Oven_door_opened?" instance_name="Oven_door_opened?"></Condition>
+                <Action class="Open_Oven" instance_name="Open_Oven"></Action>
+            </Fallback>        
+            <Action class="Take_Chicken_Brisket_from_Oven" instance_name="Take_Chicken_Brisket_from_Oven"></Action>
+            <Action class="Place_Chicken_Brisket_on_Plate" instance_name="Place_Chicken_Brisket_on_Plate"></Action>
+            <Fallback class="FallbackNode" instance_name="Close_Oven">
+                <Condition class="Oven_door_closed?" instance_name="Oven_door_closed?"></Condition>
+                <Action class="Close_Oven" instance_name="Close_Oven"></Action>
+            </Fallback>
+        </Sequence>
+    </Fallback>    
+</Sequence>

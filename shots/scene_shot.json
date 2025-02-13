@@ -1,0 +1,486 @@
+[
+    {
+        "task": "The robot task is to boil water. The behavior logic of a robot should be as follows. The kettle is initially inside a cabinet and is filled with water sourced from the sink. The stove and cabinet are all located in the kitchen. The robot needs to move the kettle from the cabinet to the stove, heat the water, confirm that the water in the kettle is boiled, and turn off the stove to ensure the safety. The goal is to get boiled water.",
+        "action_node": {
+            "Move_to_cabinet": {
+                "description": "The robot moves from its current position to the cabinet.",
+                "precondition": "None"
+            },
+            "Open_cabinet": {
+                "description": "The robot grips the cabinet door handle, pulls it open smoothly, ensuring a safe and controlled motion.",
+                "precondition": "None"
+            },
+            "Grasp_kettle": {
+                "description": "The robot extends its arm, carefully grips the kettle, and securely lifts it.",                
+                "precondition": "None"
+            },
+            "Move_to_stove": {
+                "description": "The robot moves to the stove.",                
+                "precondition": "None"
+            },
+            "Place_kettle_on_stove": {
+                "description": "The robot precisely positions the kettle on the stove, then puts the kettle on the stove, releases its gripper and retracts its gripper.",                
+                "precondition": "None"
+            },
+            "Turn_on_stove": {
+                "description": "The robot extends its gripper to turn on the stove to heat the water and then retracts its gripper.",                
+                "precondition": "None"
+            },
+            "Boil_water": {
+                "description": "The stove boils the water and the watre reacheds the boiling point.",                
+                "precondition": "None"
+            },
+            "Turn_off_stove": {
+                "description": "The robot extends its gripper to turn off the stove and then retracts its gripper.",                
+                "precondition": "None"
+            }
+        },
+        "condition_node": {
+            "Reached_cabinet?": "Check if the robot has reached near the cabinet.Require a distance of less than 0.5 meter to be considered near.",
+            "Cabinet_opened?": "Check if the cabinet door is open.",
+            "Kettle_grasped?": "Check if the robot has grasped the kettle.",
+            "Reached_stove?": "Check if the robot has reached the stove with the kettle.Require a distance of less than 0.5 meter to be considered near.",
+            "Kettle_on_stove?": "Check if the kettle is placed on the stove.",
+            "Stove_on?": "Check if the stove is turned on.",
+            "Water_boiled?": "Check if the water is boiled.",
+            "Stove_off?": "Check if the stove is turned off."
+        },
+        "scene": {
+            "agents": {
+                "boil_water_robot": {
+                    "type": "service_robot",
+                    "position": [
+                        2.0,
+                        2.0,
+                        1.0
+                    ],
+                    "size": 1.2,
+                    "gripper_content": [],
+                    "setting": "Robot can only touch objects within the range of gripper contact. Robot has two grippers and each gripper could hold one  object",
+                    "gripper_contact_range": 1.0
+                }
+            },
+            "objects": {
+                "cabinet": {
+                    "type": "cabinet",
+                    "position": [
+                        4.0,
+                        4.0,
+                        0.5
+                    ],
+                    "size": 1.0,
+                    "setting": "This cabinet is a manual door opening cabinet.",
+                    "open_close_state": "Closed",
+                    "content": [["kettle"]]
+                },
+                "kettle": {
+                    "type": "kettle",
+                    "position": [
+                        4.0,
+                        4.0,
+                        1.5
+                    ],
+                    "size": 0.3,
+                    "setting": "The kettle could be filled with water and boiled.",
+                    "water_temperature": "Room_temperature",
+                    "content":[["water"]]
+                },
+                "stove": {
+                    "type": "stove",
+                    "position": [
+                        7.0,
+                        7.0,
+                        7.5
+                    ],
+                    "size": 0.8,
+                    "setting": "The stove could heat the things placed on it. When things on the stove is boiled, the stove is turned off automatically.",
+                    "power_state": "Off"
+                }
+            },
+            "relationship": {
+                "distance_robot_cabinet": 2.87,
+                "distance_robot_stove": 9.60,
+                "distance_robot_kettle": 2.87,
+                "distance_cabinet_stove": 8.19,
+                "distance_kettle_stove": 7.35,
+                "distance_kettle_cabinet": 1.00,
+                "kettle_on_stove":false
+            },
+            "environment": {},
+            "state_description": {
+                "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+                "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+                "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+                "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+                "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",            
+                "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+                "content": "the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+                "open_close_state": "the state of the cabinet, e.g., 'Open' or 'Closed'",
+                "water_temperature": "the temperature of the water in the kettle, e.g., 'Room_temperature' or 'Boiled'",
+                "power_state": "the state of the stove, e.g., 'On' or 'Off'",
+                "distance_robot_cabinet": "the distance between the robot and the cabinet, e.g., 7.00",
+                "distance_robot_stove": "the distance between the robot and the stove, e.g., 7.00",
+                "distance_robot_kettle": "the distance between the robot and the kettle, e.g., 7.00",
+                "distance_cabinet_stove": "the distance between the cabinet and the stove, e.g., 7.00",
+                "distance_kettle_stove": "the distance between the kettle and the stove, e.g., 7.00",
+                "distance_kettle_cabinet": "the distance between the cabinet and the kettle, e.g., 7.00",
+                "kettle_on_stove": "whether the kettle on the stove"
+            }
+        }
+    },
+    {
+        "task": "The robot task is to box leftover kabobs after dinner and store them in an electric refrigerator. The behavior logic of a robot should be as follows. There are two cooked kabobs, each placed on separate plates on the breakfast table. And a fresh preservation box is also on the breakfast table. The robot needs to place two kabobs into the fresh preservation box, then store the box in the electric refrigerator located in the kitchen and finally close the refrigerator. The goal is to ensure that the two kabobs are inside the fresh preservation box, the box is inside the refrigerator, and the refrigerator is closed.",
+        "action_node": {
+            "Move_to_breakfast_table": {
+                "description": "The robot moves to the breakfast table.",
+                "precondition": "None"
+            },
+            "Grasp_kabob_1": {
+                "description": "The robot grasps the kabob_1 by leveraging its gripper.",
+                "precondition": "None"
+            },
+            "Grasp_kabob_2": {
+                "description": "The robot grasps the kabob_2 by leveraging its gripper.",
+                "precondition": "None"
+            },
+            "Open_preservation_box": {
+                "description": "The robot opens the preservation box.",
+                "precondition": "None"
+            },
+            "Place_kabob_1_into_box": {
+                "description": "The robot places the kabob_1 into the open preservation box.",
+                "precondition": "None"
+            },
+            "Place_kabob_2_into_box": {
+                "description": "The robot places the kabob_2 into the open preservation box.",
+                "precondition": "None"
+            },
+            "Close_preservation_box": {
+                "description": "The robot closes the preservation box.",
+                "precondition": "None"
+            },
+            "Move_to_refrigerator": {
+                "description": "The robot moves to the refrigerator in the kitchen.",
+                "precondition": "None"
+            },
+            "Open_refrigerator": {
+                "description": "The robot pulls the door by its gripper to open the refrigerator.",
+                "precondition": "None"
+            },
+            "Place_preservation_box_in_refrigerator": {
+                "description": "The robot places the closed preservation box containing the kabobs into the open refrigerator.",
+                "precondition": "None"
+            },
+            "Close_refrigerator": {
+                "description": "The robot pushes the door by its gripper to close the refrigerator.",
+                "precondition": "None"
+            }
+        },
+        "condition_node": {
+            "Position_at_breakfast_table?": "Check if the robot's current position is near the breakfast table. Require a distance of less than 1.0 meter to be considered near.",
+            "kabob_1_in_gripper?": "Check if the robot has successfully grasped the kabob_1.",
+            "kabob_2_in_gripper?": "Check if the robot has successfully grasped the kabob_2.",
+            "Opened_preservation_box?": "Check if the preservation box is now open.",
+            "kabob_1_in_box?": "Check if the first kabob is placed inside the preservation box.",
+            "kabob_2_in_box?": "Check if the second kabob is placed inside the preservation box.",
+            "Closed_preservation_box?": "Check if the preservation box is now closed.",
+            "Position_at_refrigerator?": "Check if the robot's current position is near the refrigerator. Require a distance of less than 1.0 meter to be considered near.",
+            "Opened_refrigerator?": "Check if the refrigerator is now open.",
+            "Preservation_box_in_refrigerator?": "Check if the preservation box is placed inside the refrigerator.",
+            "Closed_refrigerator?": "Check if the refrigerator is now closed."
+        },
+        "scene": {
+            "agents": {
+                "kitchen_robot": {
+                    "type": "service_robot",
+                    "position": [
+                        2.0,
+                        2.0,
+                        1.0
+                    ],
+                    "size": 1.8,
+                    "gripper_content": [],
+                    "setting": "Robot can only touch objects within the range of gripper contact. Robot has two grippers and each gripper could hold one  object",
+                    "gripper_contact_range": 1.0
+                }
+            },
+            "objects": {
+                "breakfast_table": {
+                    "type": "table",
+                    "position": [
+                        5.0,
+                        5.0,
+                        0.8
+                    ],
+                    "size": 2.0
+                },
+                "kabob_1": {
+                    "type": "kabob",
+                    "position": [
+                        5.2,
+                        5.1,
+                        0.9
+                    ],
+                    "size": 0.2
+                },
+                "plate_1": {
+                    "type": "plate",
+                    "position": [
+                        5.2,
+                        5.1,
+                        0.8
+                    ],
+                    "size": 0.3
+                },
+                "kabob_2": {
+                    "type": "kabob",
+                    "position": [
+                        5.2,
+                        4.9,
+                        0.9
+                    ],
+                    "size": 0.2
+                },
+                "plate_2": {
+                    "type": "plate",
+                    "position": [
+                        5.2,
+                        4.9,
+                        0.8
+                    ],
+                    "size": 0.3
+                },
+                "preservation_box": {
+                    "type": "box",
+                    "position": [
+                        5.2,
+                        5.0,
+                        0.7
+                    ],
+                    "size": 0.5,
+                    "setting": "This preservation box could be opened or closed.",
+                    "open_close_state": "Closed",
+                    "content": []
+                },
+                "refrigerator": {
+                    "type": "refrigerator",
+                    "position": [
+                        8.0,
+                        8.0,
+                        1.0
+                    ],
+                    "size": 1.5,
+                    "setting": "This refrigerator is a manual door opening refrigerator.",
+                    "open_close_state": "Closed",
+                    "content": []
+                }
+            },
+            "relationship": {
+                "distance_robot_breakfast_table": 4.25,
+                "distance_robot_kabob_1": 4.46,
+                "distance_robot_kabob_2": 4.32,
+                "distance_robot_plate_1": 4.46,
+                "distance_robot_plate_2": 4.32,
+                "distance_robot_preservation_box": 4.40,
+                "distance_robot_refrigerator": 8.49,
+                "plate_1_on_breakfast_table": true,
+                "plate_2_on_breakfast_table": true,
+                "preservation_box_on_breakfast_table": true,
+                "kabob_1_on_plate_1":true,
+                "kabob_2_on_plate_2":true
+            },
+            "environment": {},
+            "state_description": {
+                "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+                "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+                "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+                "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+                "content":"the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+                "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+                "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+                "open_close_state": "the state of the door, e.g., 'Open' or 'Closed'",
+                "distance_robot_breakfast_table": "the distance between the robot and the breakfast table, e.g., 7.0",
+                "distance_robot_plate_1": "the distance between the robot and the plate_1, e.g., 7.0",
+                "distance_robot_plate_2": "the distance between the robot and the plate_2, e.g., 7.0",
+                "distance_robot_kabob_1": "the distance between the robot and the kabob_1, e.g., 7.0",
+                "distance_robot_kabob_2": "the distance between the robot and the kabob_2, e.g., 7.0",
+                "distance_robot_preservation_box": "the distance between the robot and the preservation box, e.g., 7.0",
+                "distance_robot_refrigerator": "the distance between the robot and the refrigerator, e.g., 7.0",
+                "plate_1_on_breakfast_table": "whether the plate_1 on the _on_breakfast_table or not, e.g., True or False",
+                "plate_2_on_breakfast_table": "whether the plate_2 on the _on_breakfast_table or not, e.g., True or False",
+                "preservation_box_on_breakfast_table": "whether the preservation box is on the breakfast table or not, e.g., True or False",
+                "kabob_1_on_plate_1":"whether the kabob_1 on plate_1 or not, e.g., True or False",
+                "kabob_2_on_plate_2":"whether the kabob_2 on plate_2 or not, e.g., True or False"
+            }
+        }
+    },
+    {
+        "task": "The robot task is to cook a chicken brisket. The behavior logic of a robot should be as follows. The plate and the oven are on the shelf, and the chicken brisket is inside the electric refrigerator. The robot needs to retrieve the chicken brisket from the refrigerator, cook it using the oven, and then place it on the plate. The goal is to ensure that the chicken brisket is cooked and placed on the plate.",
+        "action_node": {
+            "Move_to_Refrigerator": {
+                "description": "The robot moves near the refrigerator. ",
+                "precondition": "None"
+            },
+            "Open_Refrigerator": {
+                "description": "The robot opens the door of the refrigerator.",
+                "precondition": "None"
+            },
+            "Retrieve_Chicken_Brisket_from_Refrigerator": {
+                "description": "The robot extends its gripper into refrigerator, grasps the chicken brisket, and bringing it out.",
+                "precondition": "None"
+            },
+            "Retrieve_Chicken_Brisket_from_Oven": {
+                "description": "The robot extends its gripper into oven, grasps the chicken brisket, and bringing it out.",
+                "precondition": "None"
+            },
+            "Close_Refrigerator": {
+                "description": "The robot gently pushes the refrigerator door closed with a controlled motion.",
+                "precondition": "None"
+            },
+            "Move_to_Oven": {
+                "description": "The robot navigates precisely to near the oven, avoiding obstacles, ensuring a safe path.",
+                "precondition": "None"
+            },
+            "Open_Oven": {
+                "description": "The robot grips the oven door handle, pulls it open smoothly, ensuring a safe and controlled motion.",
+                "precondition": "None"
+            },
+            "Place_Chicken_Brisket_in_Oven": {
+                "description": "The robot precisely positions the chicken brisket in the oven, ensuring it's centered on the rack, then puts the chicken brisket in the oven, releases its gripper and retracts its gripper.",
+                "precondition": "None"
+            },
+            "Close_Oven": {
+                "description": "The robot smoothly pushes the oven door closed, aligns it precisely, and releases, ensuring a secure seal and safety.",
+                "precondition": "None"
+            },
+            "Cook_Chicken_Brisket": {
+                "description": "The robot sets the oven to cook the chicken brisket and makes the chichen brisket cooked.",
+                "precondition": "None"
+            },
+            "Move_to_Plate": {
+                "description": "The robot moves to near the plate on the shelf. ",
+                "precondition": "None"
+            },
+            "Grasp_Plate": {
+                "description": "The robot extends its arm, carefully grips the edge of the plate, and securely lifts it.",
+                "precondition": "None"
+            },
+            "Place_Plate": {
+                "description": "The robot put the plate on a horizontal surface and releases its gripper.",
+                "precondition": "None"
+            },
+            "Place_Cooked_Chicken_Brisket_on_Plate": {
+                "description": "The robot put the chicken brisket on the plate's surface and then releases its gripper.",
+                "precondition": "None"
+            }
+        },
+        "condition_node": {
+            "Robot_near_Refrigerator?": "Check if the robot is near the refrigerator. Require a distance of less than 0.5 meter to be considered near.",
+            "Refrigerator_door_opened?": "Check if the refrigerator door is opened.",
+            "Chicken_Brisket_in_robot_gripper?": "Check if the chicken brisket is in the robot's gripper.",
+            "Refrigerator_door_closed?": "Check if the refrigerator door is closed.",
+            "Robot_near_Oven?": "Check if the robot is near the location of the oven. Require a distance of less than 0.5 meter to be considered near.",
+            "Robot_Grasp_Plate?": "Check if the robot grasps the plate.",
+            "Oven_door_opened?": "Check if the oven door is opened.",
+            "Chicken_Brisket_in_Oven?": "Check if the chicken brisket is placed inside the oven.",
+            "Oven_door_closed?": "Check if the oven door is closed.",
+            "Chicken_Brisket_Cooked?": "Check if the chicken brisket is cooked.",
+            "Robot_near_Plate?": "Check if the robot is near the plate. Require a distance of less than 0.5 meter to be considered near.",
+            "Cooked_Chicken_Brisket_in_robot_gripper?": "Check if the cooked chicken brisket is in the robot's gripper.",
+            "Cooked_Chicken_Brisket_on_Plate?": "Check if the cooked chicken brisket is placed on the plate.",
+            "Plate_is_placed?": "Check if the plate is placed on the shelf near the oven."
+        },
+        "scene": {
+            "agents": {
+                "cooking_robot": {
+                    "type": "service_robot",
+                    "position": [
+                        2.0,
+                        2.0,
+                        1.0
+                    ],
+                    "size": 1.2,
+                    "gripper_content":[],
+                    "setting": "Robot can only touch objects within the range of gripper contact. Robot has two grippers and each gripper could hold one  object",
+                    "gripper_contact_range": 1.0
+                }
+            },
+            "objects": {
+                "refrigerator": {
+                    "type": "electric_refrigerator",
+                    "position": [
+                        3.0,
+                        3.0,
+                        1.0
+                    ],
+                    "size": 1.5,
+                    "setting": "This refrigerator is a manual door opening refrigerator.",
+                    "door_status": "Closed",
+                    "power_state":"on",
+                    "content": [["chicken_brisket"]]
+                },
+                "oven": {
+                    "type": "oven",
+                    "position": [
+                        8.0,
+                        8.0,
+                        1.0
+                    ],
+                    "size": 1.0,
+                    "setting": "This oven is a manual door opening oven. When the things in the oven are heated and cooked, the heating process automatically stops",
+                    "door_status": "Closed",
+                    "power_state":"off",
+                    "content": []
+                },
+                "plate": {
+                    "type": "ceramic_plate",
+                    "position": [
+                        5.0,
+                        5.0,
+                        0.5
+                    ],
+                    "size": 0.3
+                },
+                "chicken_brisket": {
+                    "type": "chicken_brisket",
+                    "position": [
+                        3.0,
+                        3.0,
+                        0.9
+                    ],
+                    "size": 0.5,
+                    "cooked": false
+                }
+            },
+            "relationship": {
+                "chicken_brisket_on_plate": false,
+                "distance_robot_refrigerator": 1.41,
+                "distance_robot_oven": 8.49,
+                "distance_robot_plate": 4.27,
+                "distance_refrigerator_oven": 7.07,
+                "distance_refrigerator_plate": 2.87,
+                "distance_oven_plate": 4.27
+            },
+            "environment": {},
+            "state_description": {
+                "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+                "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+                "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+                "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",            
+                "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+                "door_status": "the status of the refrigerator or oven door, e.g., 'Open' or 'Closed'",
+                "content":"the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+                "power_state":"the power state of the electronical equipment. e.g., 'on' or 'off'",
+                "gripper_content":"the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+                "cooked": "whether the chicken is cooked or not, e.g., True or False",
+                "chicken_brisket_on_plate": "whether the chicken brisket is placed on the plate, e.g., True or False",
+                "distance_robot_refrigerator": "the distance between the robot and the refrigerator, e.g., 7.12",
+                "distance_robot_oven": "the distance between the robot and the oven, e.g., 7.34",
+                "distance_robot_plate": "the distance between the robot and the plate, e.g., 7.56",
+                "distance_refrigerator_oven": "the distance between the refrigerator and the oven, e.g., 7.34",
+                "distance_refrigerator_plate": "the distance between the refrigerator and the plate, e.g., 7.57",
+                "distance_oven_plate": "the distance between the oven and the plate, e.g., 7.21"
+            }
+        }
+    }
+]

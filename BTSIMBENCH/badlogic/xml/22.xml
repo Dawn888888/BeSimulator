@@ -1,0 +1,16 @@
+<Sequence class="SequenceNode" instance_name="Hang_Bicycle_On_Wall">
+    <Fallback class="FallbackNode" instance_name="Move_to_bicycle">
+        <Condition class="Is_near_bicycle?" instance_name="Is_near_bicycle?"></Condition>
+        <Action class="Move_to_bicycle" instance_name="Move_to_bicycle"></Action>
+    </Fallback>
+    <Sequence class="SequenceNode" instance_name="Attach_Bicycle_To_Rack">
+        <Fallback class="FallbackNode" instance_name="Move_to_rack">
+            <Condition class="Is_near_rack?" instance_name="Is_near_rack?"></Condition>
+            <Action class="Move_to_rack" instance_name="Move_to_rack"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Attach_bicycle_to_rack">
+            <Condition class="rack_attached_bicycle?" instance_name="rack_attached_bicycle?"></Condition>
+            <Action class="Attach_bicycle_to_rack" instance_name="Attach_bicycle_to_rack"></Action>
+        </Fallback>
+    </Sequence>
+</Sequence>

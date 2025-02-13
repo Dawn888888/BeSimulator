@@ -1,0 +1,69 @@
+[
+    {
+        "agents": {
+            "shoe_cleaning_robot": {
+                "type": "service_robot",
+                "position": [
+                    1.5,
+                    1.5,
+                    1.0
+                ],
+                "size": 1.2,
+                "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                "gripper_contact_range": 1.0,
+                "gripper_content": []
+            }
+        },
+        "objects": {
+            "shoe_1": {
+                "type": "shoe",
+                "position": [
+                    3.0,
+                    3.0,
+                    0.5
+                ],
+                "size": 0.3,
+                "clean_state": "Dirty"
+            },
+            "shoe_2": {
+                "type": "shoe",
+                "position": [
+                    3.5,
+                    3.0,
+                    0.5
+                ],
+                "size": 0.3,
+                "clean_state": "Dirty"
+            },
+            "rag": {
+                "type": "rag",
+                "position": [
+                    3.2,
+                    3.2,
+                    0.5
+                ],
+                "size": 0.2
+            }
+        },
+        "relationship": {},
+        "environment": {},
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, shoe, rag, etc.",
+            "position": "the 3D position of the robot or object, e.g., [2.0, 2.0, 0.1]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affiliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "clean_state": "the cleaning state of the shoe, e.g., 'Clean' or 'Dirty'"
+        },
+        "state_type":{
+            "type": "string",
+            "position": "float list",
+            "size": "float",  
+            "setting": "string",
+            "gripper_contact_range": "float",          
+            "gripper_content": "string list",
+            "clean_state": "string"
+        }
+    }
+]

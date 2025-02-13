@@ -1,0 +1,38 @@
+<Sequence class="SequenceNode" instance_name="Clear_Mug_Dishwasher">
+    <Sequence class="SequenceNode" instance_name="Empty_coffee_into_sink">
+        <Fallback class="FallbackNode" instance_name="Hold_mup">
+            <Condition class="mug_in_gripper?" instance_name="mug_in_gripper?"></Condition>
+            <Sequence class="SequenceNode" instance_name="hold_mug">
+                <Fallback class="FallbackNode" instance_name="Move_to_mug">
+                    <Condition class="robot_is_near_mug?" instance_name="robot_is_near_mug?"></Condition>
+                    <Action class="Move_to_mug" instance_name="Move_to_mug"></Action>
+                </Fallback>
+                <Action class="Grasp_mug" instance_name="Grasp_mug"></Action>
+            </Sequence>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Empty_mug">
+            <Condition class="mug_has_no_coffee?" instance_name="mug_has_no_coffee?"></Condition>
+            <Sequence class="SequenceNode" instance_name="Empty_mug">
+                <Fallback class="FallbackNode" instance_name="Move_to_sink">
+                    <Condition class="robot_is_near_sink?" instance_name="robot_is_near_sink?"></Condition>
+                    <Action class="Move_to_sink" instance_name="Move_to_sink"></Action>
+                </Fallback>
+                <Action class="Pour_coffee" instance_name="Pour_coffee"></Action>
+            </Sequence>
+        </Fallback> 
+    </Sequence>
+    <Sequence class="SequenceNode" instance_name="Place_Mug_Dishwasher">
+        <Fallback class="FallbackNode" instance_name="Move_to_dishwasher">
+            <Condition class="robot_is_near_dishwasher?" instance_name="robot_is_near_dishwasher?"></Condition>
+            <Action class="Move_to_dishwasher" instance_name="Move_to_dishwasher"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Open_Door">
+            <Condition class="dishwasher_door_open?" instance_name="dishwasher_door_open?"></Condition>
+            <Action class="Open_the_diswasher_door" instance_name="Open_the_diswasher_door"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Place_mug_in_dishwasher">
+            <Condition class="mug_is_in_dishwasher?" instance_name="mug_is_in_dishwasher?"></Condition>
+            <Action class="Place_mug_in_dishwasher" instance_name="Place_mug_in_dishwasher"></Action>
+        </Fallback>
+    </Sequence>
+</Sequence>

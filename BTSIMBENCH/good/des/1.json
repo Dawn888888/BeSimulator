@@ -1,0 +1,53 @@
+
+{   
+    "id":1,
+    "name":"CleanPool",
+    "bt_task":"The robot task is to clean a stained pool with a brush and detergent. The behavior logic of a robot should be as follows. The brush and detergent are on the floor. Robot need to use a brush and detergent to scrub the pool and then rinses the pool to make it clean. The goal is to make the pool clean. The robot has two grippers, which one gripper can hold one object at a time.",
+    "bt_xml_path":"./BTGenDataset/good/xml/1.xml",
+    "action_node": {
+        "move_to_brush":{
+            "precondition": null,
+            "description": "Robot moves to the location of the brush."
+        },
+        "pick_up_brush":{
+            "precondition": null,
+            "description": "Robot grasps and lifts the brush with it one gripper."
+        },
+        "move_to_detergent":{
+            "precondition": null,
+            "description": "Robot moves to the location of detergent."
+        },
+        "pick_up_detergent":{
+            "precondition": null,
+            "description": "Robot picks up the detergent with its one gripper."
+        },
+        "move_to_pool":{
+            "precondition": null,
+            "description": "Robot moves to the location of the pool."
+        },
+        "ApplyDetergent": {
+            "precondition": null,
+            "description": "Robot applies detergent which is in its gripper to the pool surface."
+        },
+        "ScrubPoolWithBrush": {
+            "precondition": null,
+            "description": "Robot extends the gripper which holds a brush to the pool which has been applied with detergent, uses the brush to scrub the pool, then the pool is still not clean and is with detergent and stain."
+        },
+        "Place_brush_detergent_to_floor":{
+            "precondition": null,
+            "description": "Robot releases its gripper and places the brush and detergent on the floor."
+        },
+        "TurnOnFaucetandRinsePool": {
+            "precondition": null,
+            "description": "Robot turns on the faucet, rinses the pool which has been applied with detergent and has been srubbed, then the pool becomes clean."
+        }
+    },
+    "condition_node": {
+        "Brush_in_gripper?":"Check if the brush is in the robot's gripper",
+        "Detergent_in_gripper?":"Check if the detergent is in the robot's gripper",
+        "IsNearBrush?": "Check if the robot is near the brush. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "IsNearDetergent?": "Check if the robot is near the detergent. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "IsNearPool?": "Check if the robot is near the pool. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "IsfaucetOpen?":"Check if the faucet is open."   
+    }
+}

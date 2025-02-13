@@ -1,0 +1,45 @@
+{
+    "id": 4,
+    "name": "BoilWater",
+    "bt_task": "The robot task is to boil water. The behavior logic of a robot should be as follows. The kettle is initially inside a cabinet and is filled with water sourced from the sink. The stove and cabinet are all located in the kitchen. The robot needs to move the kettle from the cabinet to the stove, heat the water, and wait for that the water in the kettle is boiled. The goal is to get boiled water.",
+    "bt_xml_path": "./BTGenDataset/good/xml/4.xml",
+    "action_node": {
+        "Move_to_cabinet": {
+            "description": "The robot moves to the location of the cabinet.",
+            "precondition": "None"
+        },
+        "Open_cabinet": {
+            "description": "The robot grips the cabinet door handle, pulls it open smoothly, ensuring a safe and controlled motion.",            
+            "precondition": "None"
+        },
+        "Grasp_kettle": {
+            "description": "The robot extends its arm, grasps the kettle, and takes it out.",            
+            "precondition": "None"
+        },
+        "Move_to_stove": {
+            "description": "The robot moves to the location of the stove.",            
+            "precondition": "None"
+        },
+        "Place_kettle_on_stove": {
+            "description": "The robot places the held kettle on the stove smoothly. Then, the robot releases its gripper and retracts the gripper.",            
+            "precondition": "None"
+        },
+        "Turn_on_stove": {
+            "description": "The robot turns on the stove switch to start heating.",            
+            "precondition": "None"
+        },
+        "Waitwaterboiled": {
+            "description": "The robot waits and finally the water in the kettle reaches boiling point, and robot acquires the boiled water. And the stove is turned off automatically.",            
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "IsNearCabinet?": "Check if the robot is near the cabinet. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Cabinet_opened?": "Check if the cabinet door is open.",
+        "Kettle_in_gripper?": "Check if the kettle is in the robot's gripper.",
+        "IsNearStove?": "Check if the robot is near the stove. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Kettle_on_stove?": "Check if the kettle is placed on the stove.",
+        "Stove_on?": "Check if the stove is turned on.",
+        "Water_boiled?": "Check if the water is boiled."
+    }
+}

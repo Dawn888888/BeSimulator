@@ -1,0 +1,135 @@
+[
+    {
+        "agent_task": "The robot task is to go into a room. The behavior logic of a robot should be as follows.The robot should try to go to the door first from a random intialized position. If the door won't open, it looks to see if it has the key. If it has the key, it will unlock the door, go into the room, and shut the door after. If it doesn't have the key, it will break door down, then go into the room.",
+        "condition_node_des": {
+            "door_is_open":"Check if the door is open",
+            "havekey":"Check if robot has the key"
+        },
+        "action_node_des": {
+            "WalkToDoor": {                
+                "precondition": null,
+                "description": "Agent moves from the current position to the door"
+            },
+            "UnlockDoor": {                
+                "precondition": null,
+                "description": "Agent uses a key to unlock the door"
+            },
+            "OpenDoor": {                
+                "precondition": null,
+                "description": "Agent physically pushes or pulls the unlocked door to open it"
+            },
+            "SmashDoor": {                
+                "precondition": null,
+                "description": "Agent forcefully breaks the door down"
+            },
+            "EnterRoom": {                
+                "precondition": null,
+                "description": "Agent steps through the open doorway into the room"
+            }
+        },
+        "output": {
+            "result": "Success",
+            "thought": "The robot's task is to enter a room. The behavior tree's root node is a Sequence node. The first child node is a 'WalkToDoor' action, moving the robot to the door. The second child node is a Fallback node with an 'isDoorOpen' condition. If true, it returns 'Success,' allowing the robot to proceed to the third child node. If false, the robot executes the next Sequence node. This Sequence node checks if the robot has a key and, if so, unlocks and opens the door. If the robot doesn't have the key, it executes the 'smashdoor' action to break the door open. In summary, the Fallback node ensures the door is open. Finally, the robot executes the 'enterroom' action to enter the room. The behavior tree outlines the correct action flow, allowing the robot to complete the task."
+        },
+        "xml":"./BTGenDatasetExample/llm_emulator_shot/xml/4.xml"
+    },
+    {
+        "agent_task": "The task of the robot is to pour water into the bowl. The behavioral logic of robot should be as follows. The bowl is on the countertop in the kitchen. There is a tap in the kitchen. The robot needs to fetch the bowl and turn on the tap to receive water.",
+        "condition_node_des": {
+            "IsNearBowl?":"Check if the robot is near the bowl. Require a distance less than the gripper contact range of the robot to be considered near.",
+            "IsNearTap?":"Check if the robot is near the tap. Require a distance less than the gripper contact range of the robot to be considered near.",
+            "Bowl_is_filled_with_water?":"Check if the bowl is filled with water."
+        },
+        "action_node_des": {
+            "MoveToBowl":{            
+                "precondition": null,
+                "description": "Robot moves from current location to the bowl."
+            },
+            "MoveToTap":{
+                "precondition": null,
+                "description": "Robot moves from current location to the tap."
+            },
+            "OpenTap":{
+                "precondition": null,
+                "description": "Robot opens the switch of the tap."
+            },
+            "Get_water_from_tap_to_bowl":{
+                "precondition": null,
+                "description": "Robot extends the gripper which holds a bowl, puts the bowl under the tap which is open, the water flows into the bowl, and finally the robot retract the gripper."
+            }
+        },
+        "output": {
+            "result": "Badlogic",
+            "thought": "The robot's task is to pour water into a bowl. The behavior tree's root node is a Sequence node. The first child is a Fallback node with an 'IsNearBowl' condition and a 'MoveToBowl' action, ensuring the robot moves to the bowl if it's not already there. The second child node, another Fallback, ensures the robot is near the tap. The third child node is an 'OpenTap' action, which succeeds because the robot is already near the tap. The fourth child node is a Fallback with a 'Bowl_is_filled_with_water?' condition and a 'Get_water_from_tap_to_bowl' action. If the bowl isn't filled, the robot should fill it. However, the robot isn't holding the bowl, a precondition for the action, leading to a conflict with reality logic. This failure results in the task failure, classified as 'Badlogic.'"
+        },
+        "xml":"./BTGenDatasetExample/llm_emulator_shot/xml/1.xml"
+    },
+    {
+        "agent_task": "The robot task is to pick up the bear doll, and then take the bear doll to location_A and location_B. The behavior logic of a robot should be as follows. Initially, the bear doll is on the bed. Firstly, the robot needs to move near the doll, and pick it up. Then robot needs to take the doll to location_A and location_B.",
+        "condition_node_des": {
+            "IsNearDoll?":"Check if the robot is near the bear doll. Require a distance less than the gripper contact range of the robot to be considered near.",
+            "IsNear_Location_B?":"Check if the robot is near the location_B. Require a distance less than the gripper contact range of the robot to be considered near."
+        },
+        "action_node_des": {
+            "MoveToDoll":{
+                "precondition": null,
+                "description": "Agent moves from current location to the bear doll."
+            },
+            "PickupDoll":{
+                "precondition": null,
+                "description": "Agent picks up the bear doll and holds it."
+            },
+            "MoveTo_Location_B":{
+                "precondition": null,
+                "description": "Agent moves from current location to location_B."
+            }
+        },
+        "output": {
+            "result": "Unreachable",
+            "thought": "The robot's task is to pick up the bear doll and take it to location_A and location_B. The behavior tree's root node is a Sequence node. The first child is a Fallback node with an 'IsNearDoll' condition and a 'MoveToDoll' action, ensuring the robot is near the bear doll. The second child is an action node, 'PickupDoll,' where the robot picks up the bear doll. The third child is another Fallback node with an 'IsNear_Location_B?' condition and a 'MoveTo_Location_B' action, ensuring the robot moves to location_B. The behavior tree ends here. However, the task requires the robot to take the doll to both location_A and location_B, but the behavior tree only takes the doll to location_B. Therefore, the robot task is incomplete, making the behavior tree 'Unreachable.'"
+        },
+        "xml":"./BTGenDatasetExample/llm_emulator_shot/xml/0.xml"
+    },
+    {
+        "agent_task": "The robot task is to assist in get a glass of drink. The behavior logic of a robot should be as follows. Initially, the robot is located in a kitchen. A glass and a drink bottle filled with the drink are also in the kitchen. Firstly, Robot need to move to the drinkbottle to fetch it, then move to the glass to fetch it. When robot has a drinkbottle and a glass in the grippers, then it can pour the drink from the drink bottle to glass, which means that the task is completed. Note that robot need to know where the drink bottle and the glass is, then it can move to them. But initlially Robot maybe does not know where the drink bottle and the glass is, then the robot need to observe the environment to find the objects.",
+        "condition_node_des": {
+            "knowwherebottle":"Check if robot knows where the bottle is",
+            "knowwhereglass":"Check if robot knows where the glass is"
+        },
+        "action_node_des": {
+            "FindBottle": {
+                "precondition": null,
+                "description": "Agent finds the bottle by observing the environment and then knows where it is."
+            },
+            "FindGlass": {
+                "precondition": null,
+                "description": "Agent finds the glass by observing the environment and then knows where it is."
+            },
+            "MoveToBottle":{
+                "precondition": null,
+                "description": "Agent moves to the drink bottle."
+            },
+            "MoveToGlass":{
+                "precondition": null,
+                "description": "Agent moves to the glass."
+            },
+            "FetchBottle": {
+                "precondition": null,
+                "description": "Agent picks up the drink bottle and holds it."
+            },
+            "FetchGlass": {
+                "precondition": null,
+                "description": "Agent picks up the glass and holds it."
+            },
+            "PourDrink": {
+                "precondition": null,
+                "description": "Agent carefully pours the drink of the drink bottle which is held by robot into the glass which is also held by robot, and then Agent can get a glass of drink."
+            }
+        },
+        "output": {
+            "result": "Success",
+            "thought": "The robot's task is to get a glass of drink. The behavior tree's root node is a Sequence node. The first child is a Fallback node with a 'KnowWhereBottle' condition and a 'FindBottle' action. If the robot doesn't know where the bottle is, it finds it; otherwise, it proceeds. The second child is an action node 'MoveToBottle,' where the robot moves to the bottle. The third child is an action node 'FetchBottle,' where the robot picks up the bottle. The next steps ensure the robot knows where the glass is, moves to it, and picks it up. Now, the robot holds both the bottle and the glass. The final action node is 'PourDrink,' where the robot pours the drink from the bottle into the glass. In summary, the behavior tree outlines the correct action flow for the task, and the robot can complete it accordingly."
+        },
+        "xml":"./BTGenDatasetExample/llm_emulator_shot/xml/5.xml"
+    }
+]

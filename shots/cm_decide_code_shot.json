@@ -1,0 +1,123 @@
+[
+    {
+        "states": {
+            "agents": {
+                "navigation_robot": {
+                    "type": "mobile_robot",
+                    "position": [
+                        5.0,
+                        5.0,
+                        0.0
+                    ],
+                    "size": 1.2,
+                    "velocity": 0.5,
+                    "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                    "gripper_contact_range": 1.0,
+                    "gripper_content": []
+                }
+            },
+            "objects": {
+                "location_A": {
+                    "type": "coordinate",
+                    "position": [
+                        7.0,
+                        1.0,
+                        0.0
+                    ],
+                    "size": 0.0
+                }
+            },
+            "relationship": {},
+            "environment": {}
+        },
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "velocity": "the velocity of the robot, e.g., 0.1",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]"
+        },
+        "agent_task": "The robot task is to move to the specific location_A.",
+        "conditon_name": "reach_location_A?",
+        "condition_des": "Check if the robot reachs near the location_A. Require a distance of less than the gripper contact range to be considered near.",
+        "corestates": [
+            "agents-navigation_robot-position",
+            "objects-location_A-position",
+            "agents-navigation_robot-gripper_contact_range"
+        ],
+        "output": {
+            "code":"###python\nimport math\ndef robot_near_object(robot_position, object_position, gripper_contact_range):\n    distance = math.sqrt((robot_position[0] - object_position[0]) ** 2 + (robot_position[1] - object_position[1]) ** 2 + (robot_position[2] - object_position[2]) ** 2)\n    if distance <= gripper_contact_range:\n        return True\n    else:\n        return False\nresp=robot_near_object([5.0, 5.0, 0],[7.0, 1.0, 0],1.0)\n###",
+            "thought": "According to the current world state, the position of the robot is [5.0, 5.0, 0], the position of the location_A is [7.0, 1.0, 0], and the gripper_contact_range is 1.0. To judging if the condition 'reach_location_A?' is met or not, it needs to calculate the distance by generating a python code snippet."
+        }
+    },
+    {
+        "states": {
+            "agents": {
+                "home_robot": {
+                    "type": "home_robot",
+                    "position": [
+                        1.0,
+                        1.0,
+                        0.7
+                    ],
+                    "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                    "gripper_contact_range": 0.5,
+                    "size": 1.2,
+                    "gripper_content": []
+                }
+            },
+            "objects": {
+                "fruit_tray": {
+                    "type": "fruit_tray",
+                    "position": [
+                        1.1,
+                        1.1,
+                        0.6
+                    ],
+                    "size": 0.2,
+                    "content": [
+                        [
+                            "apple"
+                        ]
+                    ]
+                },
+                "apple": {
+                    "type": "apple",
+                    "position": [
+                        1.1,
+                        1.1,
+                        0.7
+                    ],
+                    "size": 0.1
+                }
+            },
+            "relationship": {},
+            "environment": {
+                "type": "kitchen"
+            }
+        },
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.6",
+            "content": "the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]"
+        },
+        "agent_task": "The robot task is to put a fruit tray containing apple into the refrigerator. The behavioral logic of robot should be as follows. The fruit tray is on the countertop in the kitchen, with an apple inside. There is a refrigerator in the kitchen. The robot needs to put the fruit tray into the refrigerator and turn off the refrigerator.",
+        "conditon_name": "is_near_fruit_tray?",
+        "condition_des": "Check if the robot is near the fruit tray. Require a distance of less than the gripper contact range to be considered near.",
+        "corestates": [
+            "agents-home_robot-position",
+            "objects-fruit_tray-position",
+            "agents-home_robot-gripper_contact_range"
+        ],
+        "output": {
+            "code":"###python\nimport math\ndef robot_near_fruit_tray(robot_position, fruit_tray_position, gripper_contact_range):\n    distance = math.sqrt((robot_position[0] - fruit_tray_position[0]) ** 2 + (robot_position[1] - fruit_tray_position[1]) ** 2 + (robot_position[2] - fruit_tray_position[2]) ** 2)\n    if distance <= gripper_contact_range:\n        return True\n    else:\n        return False\nresp=robot_near_fruit_tray([5.0, 5.0, 0],[7.0, 1.0, 0],1.0)\n###",
+            "thought": "According to the current world state, the position of the robot is [1.0, 1.0, 0.7], the position of the fruit_tray is [1.1, 1.1, 0.6], and the gripper_contact_range is 0.5. To judging if the condition 'is_near_fruit_tray?' is met or not, it needs to calculate the distance by generating a python code snippet."
+        }
+    }
+]

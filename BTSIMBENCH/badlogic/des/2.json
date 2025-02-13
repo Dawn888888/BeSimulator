@@ -1,0 +1,25 @@
+{
+    "id": 2,
+    "name": "ApplyPesticides",
+    "bt_task": "The robot task is to apply pesticides to a lawn. The behavior logic of a robot should be as follows. The pesticide atomizer is on the floor and contains the pesticide. The robot need to use the pesticide atomizer to cover the lawn with the pesticide. The goal is to ensure that the lawn is sprayed with the pesticide",
+    "bt_xml_path": "./BTGenDataset/good/xml/2.xml",
+    "action_node": {
+        "Pick_up_pesticide_atomizer": {
+            "description": "The robot grasps and lifts the pesticide atomizer.",
+            "precondition": "None"
+        },
+        "Move_to_lawn": {
+            "description": "The robot moves to the location of the lawn.",
+            "precondition": "None"
+        },
+        "Spray_pesticide": {
+            "description": "The robot sprays pesticide on the lawn using the pesticide atomizer in its gripper and makes the lawn has been sprayed completely.",
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "atomizer_in_gripper?": "Check if the pesticide atomizer is in the robot's gripper.",
+        "isNearLawn?": "Check if the robot is near the location of the lawn. Require a distance of less than the gripper contact range to be considered near.",
+        "lawn_applied_pesticide?": "Check if the robot has applied pesticide to the lawn."
+    }
+}

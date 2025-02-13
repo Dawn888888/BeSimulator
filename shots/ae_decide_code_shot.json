@@ -1,0 +1,184 @@
+[
+    {
+        "agent_task": "The robot task is to put a fruit tray containing apple into the refrigerator. The behavioral logic of robot should be as follows. The fruit tray is on the countertop in the kitchen, with an apple inside. There is a refrigerator in the kitchen. The robot needs to put the fruit tray into the refrigerator and turn off the refrigerator.",
+        "action": {
+            "action_class": "Pick_up_Fruit_Tray",
+            "precondition": "None",
+            "description": "The robot grasps and lifts the fruit_tray with it one gripper.",
+            "action_instance": "Pick_up_Fruit_Tray"
+        },
+        "corestates": {
+            "can_robot_touch_fruit_tray": [
+                "agents-home_robot-position",
+                "objects-fruit_tray-position",
+                "agents-home_robot-gripper_contact_range"
+            ]
+        },
+        "output": {
+            "thought": "The fruit_tray's position is [1.1,1.1,0.6], robot is [1.0,1.0,0.7], robot's gripper_contact_range 0.5. To demetermine whether the gripper could touch 'fruit_tray', we need to generate python code to accurately calculate the distance.",            
+            "code": "###python\nimport math\ndef can_robot_touch_fruit_tray(robot_position, fruit_tray_position, gripper_contact_range):\n    distance = math.sqrt((robot_position[0] - fruit_tray_position[0]) ** 2 + (robot_position[1] - fruit_tray_position[1]) ** 2 + (robot_position[2] - fruit_tray_position[2]) ** 2)\n    return gripper_contact_range >= distance\nresp = can_robot_touch_fruit_tray([1, 1, 0.7], [1.1, 1.1, 0.6], 0.5)###"
+        },
+        "states": {
+            "agents": {
+                "home_robot": {
+                    "type": "home_robot",
+                    "position": [
+                        1.0,
+                        1.0,
+                        0.7
+                    ],
+                    "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                    "gripper_contact_range": 0.5,
+                    "size": 1.2,
+                    "gripper_content": []
+                }
+            },
+            "objects": {
+                "fruit_tray": {
+                    "type": "fruit_tray",
+                    "position": [
+                        1.1,
+                        1.1,
+                        0.6
+                    ],
+                    "size": 0.2,
+                    "content": [
+                        [
+                            "apple"
+                        ]
+                    ]
+                },
+                "apple": {
+                    "type": "apple",
+                    "position": [
+                        1.1,
+                        1.1,
+                        0.7
+                    ],
+                    "size": 0.1
+                },
+                "refrigerator": {
+                    "type": "refrigerator",
+                    "position": [
+                        5.0,
+                        5.0,
+                        1.0
+                    ],
+                    "size": 1.8,
+                    "door_status": "Closed",
+                    "content": []
+                }
+            },
+            "relationship": {
+                "fruit_tray_on_countertop": true
+            },
+            "environment": {
+                "type": "kitchen"
+            }
+        },
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.6",
+            "content": "the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "door_status": "the status of the refrigerator, e.g., 'Open' or 'Closed'",
+            "fruit_tray_on_countertop": "whether the fruit tray is on the countertop or not, e.g., True or False"
+        }
+    },
+    {
+        "agent_task": "The robot task is to put a fruit tray containing apple into the refrigerator. The behavioral logic of robot should be as follows. The fruit tray is on the countertop in the kitchen, with an apple inside. There is a refrigerator in the kitchen. The robot needs to put the fruit tray into the refrigerator and turn off the refrigerator.",
+        "action": {
+            "action_class": "Move_To_Refrigerator",
+            "precondition": "None",
+            "description": "The robot moves to the location near the refrigerator.",
+            "action_instance": "Move_To_Refrigerator"
+        },
+        "corestates": {
+            "is_refrigerator_inside_robot_gripper_contact": [
+                "agents-home_robot-position",
+                "objects-refrigerator-position",
+                "agents-home_robot-gripper_contact_range"
+            ]
+        },
+        "output": {
+            "thought": "The refrigerator's position is [5.0,5.0,1.0], robot is [1.0,1.0,0.7], robot's gripper_contact_range 0.5. To demetermine whether the gripper could move to 'refrigerator', we should to determine whether the position of the refrigerator is inside the contact of the robot's gripper. If no, the robot can move to the refrigerator. Thus, we need to generate codes to calculate accurately.",
+            "code":"###python\nimport math\ndef is_refrigerator_inside_robot_gripper_contact(robot_position, refrigerator_position, gripper_contact_range):\n    distance = math.sqrt((robot_position[0] - refrigerator_position[0]) ** 2 + (robot_position[1] - refrigerator_position[1]) ** 2 + (robot_position[2] - refrigerator_position[2]) ** 2)\n    return gripper_contact_range >= distance\nresp = is_refrigerator_inside_robot_gripper_contact([1, 1, 0.7], [5.0,5.0,1.0], 0.5)###"
+        },
+        "states": {
+            "agents": {
+                "home_robot": {
+                    "type": "home_robot",
+                    "position": [
+                        1.0,
+                        1.0,
+                        0.7
+                    ],
+                    "gripper_content": [
+                        [
+                            "fruit_tray",
+                            [
+                                "apple"
+                            ]
+                        ]
+                    ],
+                    "size": 1.2,
+                    "gripper_contact_range": 0.5,
+                    "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously."
+                }
+            },
+            "objects": {
+                "fruit_tray": {
+                    "type": "fruit_tray",
+                    "position": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "size": 0.2,
+                    "content": [
+                        [
+                            "apple"
+                        ]
+                    ]
+                },
+                "apple": {
+                    "type": "apple",
+                    "position": [
+                        1.0,
+                        1.0,
+                        1.1
+                    ],
+                    "size": 0.1
+                },
+                "refrigerator": {
+                    "type": "refrigerator",
+                    "position": [
+                        5.0,
+                        5.0,
+                        1.0
+                    ],
+                    "size": 1.8,
+                    "door_status": "Closed",
+                    "content": []
+                }
+            },
+            "relationship": {},
+            "environment": {
+                "type": "kitchen"
+            }
+        },
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.6",
+            "door_status": "the status of the refrigerator, e.g., 'Open' or 'Closed'",
+            "content": "the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]"
+        }
+    }
+]

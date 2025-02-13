@@ -1,0 +1,83 @@
+{
+    "id": 21,
+    "name": "GetDrink",
+    "bt_task": "The robot task is to prepare a drink with orange juice, ice cube, and a straw. The behavior logic of a robot should be as follows. The water glass and a straw are inside a cabinet. The pitcher filled with orange juice is inside an electric refrigerator. And an ice cube is inside a bowl which is also in the refrigerator. The robot needs to retrieve the water glass, pitcher, ice cube from their respective locations in the kitchen, then place them on the table. Then robot should fill the water glass with orange juice, add an ice cube to the glass, and place the straw inside the glass. The goal is to obtain a glass of orange juice with ice cube.",
+    "bt_xml_path": "./BTGenDataset/good/xml/21.xml",
+    "action_node": {
+        "Move_to_table": {
+            "description": "The robot moves to the location of the table.",
+            "precondition": "None"
+        },
+        "Move_to_cabinet": {
+            "description": "The robot moves to the location of the cabinet.",
+            "precondition": "None"
+        },
+        "Open_cabinet": {
+            "description": "The robot opens the cabinet door with one gripper.",            
+            "precondition": "None"
+        },
+        "Retrieve_water_glass_from_cabinet": {
+            "description": "The robot extends its an gripper into the cabinet, holds the water glass and takes it out of the cabinet.",            
+            "precondition": "None"
+        },
+        "Retrieve_straw_from_cabinet": {
+            "description": "The robot extends its an gripper into the cabinet, holds a straw and takes it out of the cabinet.",
+            "precondition": "None"
+        },
+        "Place_glass_straw_to_table":{
+            "description": "The robot extends the gripper that holds the water glass and the straw, places the water glass and straw on the table, and then retracts the grippers.",
+            "precondition_name": "None"
+        },
+        "Move_to_refrigerator": {
+            "description": "The robot moves to the location of the refrigerator.",            
+            "precondition": "None"
+        },
+        "Open_refrigerator": {
+            "description": "The robot opens the refrigerator door with one gripper.",
+            "precondition": "None"
+        },
+        "Retrieve_pitcher_from_refrigerator": {
+            "description": "The robot extends its an gripper into the refrigerator, holds the pitcher, and takes the pitcher out of the refrigerator.",
+            "precondition": "None"
+        },
+        "Retrieve_ice_cube_from_refrigerator": {
+            "description": "The robot extends its an gripper into the refrigerator, holds the ice cube, and takes ice cube out of the refrigerator.",
+            "precondition": "None"
+        },
+        "Place_ice_to_table":{
+            "description": "The robot extends the gripper that holds ice cube, places ice cube on the table and then retracts the grippers.",
+            "precondition_name": "None"
+        },
+        "Pour_orange_juice": {
+            "description": "The robot picks up the pitcher, and then pours orange juice in the pitcher into the water glass until the glass is full, and robot still holds the pitcher.",
+            "precondition": "None"
+        },
+        "Place_pitcher_on_table": {
+            "description": "The robot extends the gripper that holds pitcher, places the pitcher on the table and releases the gripper.",
+            "precondition": "None"
+        },
+        "Add_ice_cube": {
+            "description": "The robot picks up the ice cube and adds them to the water glass. Then, the robot releases the gripper.",
+            "precondition": "None"
+        },
+        "Insert_straw": {
+            "description": "The robot picks up the straw from the table and inserts it into the water glass. Then, the robot releases the gripper.",
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "Prepare_work_is_done?":"Check if the robot has placed ice cube, pitcher, water glass and straw on the table",
+        "Is_near_cabinet?": "Check if the robot is near the cabinet. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Cabinet_door_is_open?": "Check if the cabinet door is open.",
+        "Water_glass_in_gripper?": "Check if the water glass is in the robot's gripper.",
+        "Straw_in_gripper?": "Check if the straw is in the robot's gripper.",
+        "Is_near_table?": "Check if the robot is near the table. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Is_near_refrigerator?": "Check if the robot is near the refrigerator. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "refrigerator_door_is_open?": "Check if the refrigerator door is opened.",
+        "Pitcher_in_gripper?": "Check if the pitcher is in the robot's gripper.",
+        "Ice_cube_in_gripper?": "Check if the ice cube are in the robot's gripper.",
+        "Water_glass_is_filled_with_orange_juice?": "Check if the water glass is filled with orange juice.",
+        "ice_cube_in_water_glass?": "Check if the water glass contains the ice cube.",
+        "straw_in_water_glass?": "Check if the straw is inserted into the water glass."
+    }
+}

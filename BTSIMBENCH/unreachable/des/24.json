@@ -1,0 +1,26 @@
+{
+    "id": 24,
+    "name": "PolishShoes",
+    "bt_task": "The robot task is to polish a pair of shoes. The behavior logic of a robot should be as follows. Initially, both shoes are on the floor and covered with a stain. A rag is also on the floor and it is near the shoes. The robot needs to use the rag to clean the stain from both shoes. The goal is to make the pair of shoes clean.",
+    "bt_xml_path": "./BTGenDataset/good/xml/24.xml",
+    "action_node": {
+        "Move_To_Shoes": {
+            "description": "The robot moves to the location of the shoes.",
+            "precondition": "None"
+        },
+        "Clean_First_Shoe_With_Rag": {
+            "description": "The robot uses the rag which is in its gripper to clean the stain from the first shoe.",
+            "precondition": "None"
+        },
+        "Pick_up_Rag":{
+            "description": "The robot holds the rag using its one gripper.",
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "Is_near_Shoes?": "Check if the robot is near the shoes. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "First_Shoe_Cleaned?": "Check if the first shoe is cleaned of the stain.",
+        "Second_Shoe_Cleaned?": "Check if the second shoe is cleaned of the stain.",
+        "Rag_in_gripper?":"Check if the rag is in the robot's gripper."
+    }
+}

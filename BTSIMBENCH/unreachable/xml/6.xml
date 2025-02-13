@@ -1,0 +1,55 @@
+<Sequence class="SequenceNode" instance_name="Kabob Preservation Task">
+    <Sequence class="SequenceNode" instance_name="Prepare_Preservation_Box">
+        <Sequence class="SequenceNode" instance_name="Collect_Kabobs_Plates">
+            <Fallback class="FallbackNode" instance_name="Move_to_breakfast_table">
+                <Condition class="IsNearBreakfastTable?" instance_name="IsNearBreakfastTable?"></Condition>
+                <Action class="Move_to_breakfast_table" instance_name="Move_to_breakfast_table"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Grasp_kabob_plate_1">
+                <Condition class="Kabob_1_in_gripper?" instance_name="Kabob_1_in_gripper?"></Condition>
+                <Action class="Grasp_kabob_1" instance_name="Grasp_kabob_1"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Grasp_kabob_plate_2">
+                <Condition class="Kabob_2_in_gripper?" instance_name="Kabob_2_in_gripper?"></Condition>
+                <Action class="Grasp_kabob_2" instance_name="Grasp_kabob_2"></Action>
+            </Fallback>
+        </Sequence>
+        <Sequence class="SequenceNode" instance_name="Transfer_Kabobs_Box">
+            <Fallback class="FallbackNode" instance_name="Open_preservation_box">
+                <Condition class="Preservation_box_opened?" instance_name="Preservation_box_opened?"></Condition>
+                <Action class="Open_preservation_box" instance_name="Open_preservation_box"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Place_kabob_from_plate_1_into_box">
+                <Condition class="kabob_1_in_box?" instance_name="kabob_1_in_box?"></Condition>
+                <Action class="Place_kabob_1_into_box" instance_name="Place_kabob_1_into_box"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Place_kabob_from_plate_2_into_box">
+                <Condition class="kabob_2_in_box?" instance_name="kabob_2_in_box?"></Condition>
+                <Action class="Place_kabob_2_on_plate" instance_name="Place_kabob_2_on_plate"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Close_preservation_box">
+                <Condition class="Preservation_box_closed?" instance_name="Preservation_box_closed?"></Condition>
+                <Action class="Close_preservation_box" instance_name="Close_preservation_box"></Action>
+            </Fallback>
+            <Action class="Grasp_preservation_box" instance_name="Grasp_preservation_box"></Action>
+        </Sequence>
+    </Sequence>
+    <Sequence class="SequenceNode" instance_name="Store in Refrigerator">
+        <Fallback class="FallbackNode" instance_name="Move_to_refrigerator">
+            <Condition class="IsNearRefrigerator?" instance_name="IsNearRefrigerator?"></Condition>
+            <Action class="Move_to_refrigerator" instance_name="Move_to_refrigerator"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Open_refrigerator">
+            <Condition class="Refrigerator_opened?" instance_name="Refrigerator_opened?"></Condition>
+            <Action class="Open_refrigerator" instance_name="Open_refrigerator"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Place_preservation_box_in_refrigerator">
+            <Condition class="Preservation_box_in_refrigerator?" instance_name="Preservation_box_in_refrigerator?"></Condition>
+            <Action class="Place_preservation_box_in_refrigerator" instance_name="Place_preservation_box_in_refrigerator"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Close_refrigerator">
+            <Condition class="Refrigerator_closed?" instance_name="Refrigerator_closed?"></Condition>
+            <Action class="Close_refrigerator" instance_name="Close_refrigerator"></Action>
+        </Fallback>
+    </Sequence>
+</Sequence>

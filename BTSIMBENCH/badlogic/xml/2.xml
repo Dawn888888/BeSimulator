@@ -1,0 +1,16 @@
+<Sequence class="SequenceNode" instance_name="Apply_Pesticide_Lawn">
+    <Sequence class="SequenceNode" instance_name="Prepare_Atomizer_Lawn">
+        <Fallback class="FallbackNode" instance_name="Pick_up_pesticide_atomizer">
+            <Condition class="atomizer_in_gripper?" instance_name="atomizer_in_gripper?"></Condition>
+            <Action class="Pick_up_pesticide_atomizer" instance_name="Pick_up_pesticide_atomizer"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Move_to_lawn_start">
+            <Condition class="isNearLawn?" instance_name="isNearLawn?"></Condition>
+            <Action class="Move_to_lawn" instance_name="Move_to_lawn"></Action>
+        </Fallback>
+    </Sequence>
+    <Fallback class="FallbackNode" instance_name="Spray_pesticide">
+        <Condition class="lawn_applied_pesticide?" instance_name="lawn_applied_pesticide?"></Condition>
+        <Action class="Spray_pesticide" instance_name="Spray_pesticide"></Action>
+    </Fallback>
+</Sequence>

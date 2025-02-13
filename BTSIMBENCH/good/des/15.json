@@ -1,0 +1,76 @@
+{
+    "id": 15,
+    "name": "CookBrisket",
+    "bt_task": "The robot task is to cook a chicken brisket. The behavior logic of a robot should be as follows. The plate and the oven are on the shelf, and the chicken brisket is inside the electric refrigerator. The electric refrigerator door is closed initially. The robot needs to retrieve the chicken brisket from the refrigerator, cook it using the oven, then take out and place it on the plate. The goal is to ensure that the chicken brisket is cooked and placed on the plate. The robot has two grippers, which one gripper can hold one object at a time.",
+    "bt_xml_path": "./BTGenDataset/good/xml/15.xml",
+    "action_node": {
+        "Move_to_Refrigerator": {
+            "description": "The robot moves to the location of the refrigerator. ",
+            "precondition": "None"
+        },
+        "Open_Refrigerator": {
+            "description": "The robot grips the refrigerator door handle, pulls it open smoothly, ensuring a safe and controlled motion.",            
+            "precondition": "None"
+        },
+        "Take_Chicken_Brisket_from_Refrigerator": {
+            "description": "The robot extends its gripper into the opened refrigerator, grasps the chicken brisket, and brings the chicken brisket out.",            
+            "precondition": "None"
+        },
+        "Take_Chicken_Brisket_from_Oven": {
+            "description": "The robot extends its gripper into the opened oven, grasps the chicken brisket, and brings the chicken brisket out.",            
+            "precondition": "None"
+        },
+        "Close_Refrigerator": {
+            "description": "The robot gently pushes the refrigerator door closed with a controlled motion.",            
+            "precondition": "None"
+        },
+        "Move_to_Oven": {
+            "description": "The robot moves to the location of the oven.",
+            "precondition": "None"
+        },
+        "Open_Oven": {
+            "description": "The robot grips the oven door handle, pulls it open smoothly, ensuring a safe and controlled motion.",
+            "precondition": "None"
+        },
+        "Place_Chicken_Brisket_in_Oven": {
+            "description": "The robot precisely estimates the position of the chicken brisket in the oven, ensuring it's centered on the rack, then puts the chicken brisket that is held by the gripper in the oven, releases and retracts its gripper.",
+            "precondition": "None"
+        },
+        "Close_Oven": {
+            "description": "The robot smoothly pushes the oven door closed.",            
+            "precondition": "None"
+        },
+        "TurOn_Oven": {
+            "description": "The robot extends its gripper to turn on the oven for heating the chicken brisket in the oven.",
+            "precondition": "None"
+        },
+        "Move_to_Plate": {
+            "description": "The robot moves to the location of the plate. ",
+            "precondition": "None"
+        },
+        "Grasp_Plate": {
+            "description": "The robot extends its arm, carefully holds up the plate.",            
+            "precondition": "None"
+        },        
+        "Place_Cooked_Chicken_Brisket_on_Plate": {
+            "description": "The robot puts the chicken brisket that is held by the robot gripper on the surface of the plate that is also sheld by the robot gripper.",
+            "precondition": "None"
+        },
+        "Wait_for_cook":{
+            "description": "The robot waits the chicken brisket is totally cooked in the oven.",
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "Robot_near_Refrigerator?": "Check if the robot is near the location of the refrigerator. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Refrigerator_door_opened?": "Check if the refrigerator door is opened.",        
+        "Refrigerator_door_closed?": "Check if the refrigerator door is closed.",
+        "Robot_near_Oven?": "Check if the robot is near the location of the oven. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Oven_door_opened?": "Check if the oven door is opened.",
+        "Chicken_Brisket_in_Oven?": "Check if the chicken brisket is placed inside the oven.",
+        "Oven_door_closed?": "Check if the oven door is closed.",
+        "Oven_is_working?": "Check if the oven is working for cooking the chicken brisket.",
+        "Robot_near_Plate?": "Check if the robot is near the location of the plate. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Chicken_Brisket_is_OK?":"Check if the timing of the oven has ended and if the chicken brisket is well cooked."
+    }
+}

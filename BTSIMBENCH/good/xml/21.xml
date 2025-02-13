@@ -1,0 +1,72 @@
+<Sequence class="SequenceNode" instance_name="Prepare_Orange_Juice_Drink">
+    <Fallback class="FallbackNode" instance_name="Move_to_table">
+        <Condition class="Is_near_table?" instance_name="Is_near_table?"></Condition>
+        <Action class="Move_to_table" instance_name="Move_to_table"></Action>
+    </Fallback>
+    <Fallback class="FallbackNode" instance_name="Prepare_Work">
+        <Condition class="Prepare_work_is_done?" instance_name="Prepare_work_is_done?"></Condition>
+        <Sequence class="SequenceNode" instance_name="Prepare_work_">
+            <Sequence class="SequenceNode" instance_name="Gather_Items_From_Cabinet">
+                <Fallback class="FallbackNode" instance_name="Move_to_cabinet">
+                    <Condition class="Is_near_cabinet?" instance_name="Is_near_cabinet?"></Condition>
+                    <Action class="Move_to_cabinet" instance_name="Move_to_cabinet"></Action>
+                </Fallback>
+                <Fallback class="FallbackNode" instance_name="Open_cabinet">
+                    <Condition class="Cabinet_door_is_open?" instance_name="Cabinet_door_is_open?"></Condition>
+                    <Action class="Open_cabinet" instance_name="Open_cabinet"></Action>
+                </Fallback>
+                <Fallback class="FallbackNode" instance_name="Retrieve_water_glass_from_cabinet">
+                    <Condition class="Water_glass_in_gripper?" instance_name="Water_glass_in_gripper?"></Condition>
+                    <Action class="Retrieve_water_glass_from_cabinet" instance_name="Retrieve_water_glass_from_cabinet"></Action>
+                </Fallback>
+                <Fallback class="FallbackNode" instance_name="Retrieve_straw_from_cabinet">
+                    <Condition class="Straw_in_gripper?" instance_name="Straw_in_gripper?"></Condition>
+                    <Action class="Retrieve_straw_from_cabinet" instance_name="Retrieve_straw_from_cabinet"></Action>
+                </Fallback>
+                <Fallback class="FallbackNode" instance_name="Move_to_table">
+                    <Condition class="Is_near_table?" instance_name="Is_near_table?"></Condition>
+                    <Action class="Move_to_table" instance_name="Move_to_table"></Action>
+                </Fallback>
+                <Action class="Place_glass_straw_to_table" instance_name="Place_glass_straw_to_table"></Action>
+            </Sequence>
+            <Sequence class="SequenceNode" instance_name="Fetch_Ingredients_From_Fridge">
+                <Fallback class="FallbackNode" instance_name="Move_to_refrigerator">
+                    <Condition class="Is_near_refrigerator?" instance_name="Is_near_refrigerator?"></Condition>
+                    <Action class="Move_to_refrigerator" instance_name="Move_to_refrigerator"></Action>
+                </Fallback>
+                <Fallback class="FallbackNode" instance_name="Open_refrigerator">
+                    <Condition class="refrigerator_door_is_open?" instance_name="refrigerator_door_is_open?"></Condition>
+                    <Action class="Open_refrigerator" instance_name="Open_refrigerator"></Action>
+                </Fallback>
+                <Fallback class="FallbackNode" instance_name="Retrieve_pitcher_from_refrigerator">
+                    <Condition class="Pitcher_in_gripper?" instance_name="Pitcher_in_gripper?"></Condition>
+                    <Action class="Retrieve_pitcher_from_refrigerator" instance_name="Retrieve_pitcher_from_refrigerator"></Action>
+                </Fallback>
+                <Fallback class="FallbackNode" instance_name="Retrieve_ice_cube_from_refrigerator">
+                    <Condition class="Ice_cube_in_gripper?" instance_name="Ice_cube_in_gripper?"></Condition>
+                    <Action class="Retrieve_ice_cube_from_refrigerator" instance_name="Retrieve_ice_cube_from_refrigerator"></Action>
+                </Fallback>
+                <Fallback class="FallbackNode" instance_name="Move_to_table">
+                    <Condition class="Is_near_table?" instance_name="Is_near_table?"></Condition>
+                    <Action class="Move_to_table" instance_name="Move_to_table"></Action>
+                </Fallback>
+                <Action class="Place_ice_to_table" instance_name="Place_ice_to_table"></Action>
+            </Sequence>
+        </Sequence>
+    </Fallback>
+    <Sequence class="SequenceNode" instance_name="Assemble_Orange_Juice_Drink">
+        <Fallback class="FallbackNode" instance_name="Pour_orange_juice">
+            <Condition class="Water_glass_is_filled_with_orange_juice?" instance_name="Water_glass_is_filled_with_orange_juice?"></Condition>
+            <Action class="Pour_orange_juice" instance_name="Pour_orange_juice"></Action>
+        </Fallback>
+        <Action class="Place_pitcher_on_table" instance_name="Place_pitcher_on_table"></Action>
+        <Fallback class="FallbackNode" instance_name="Add_ice_cube">
+            <Condition class="ice_cube_in_water_glass?" instance_name="ice_cube_in_water_glass?"></Condition>
+            <Action class="Add_ice_cube" instance_name="Add_ice_cube"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Insert_straw">
+            <Condition class="straw_in_water_glass?" instance_name="straw_in_water_glass?"></Condition>
+            <Action class="Insert_straw" instance_name="Insert_straw"></Action>
+        </Fallback>
+    </Sequence>
+</Sequence>

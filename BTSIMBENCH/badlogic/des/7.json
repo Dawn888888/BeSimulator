@@ -1,0 +1,68 @@
+{
+    "id": 7,
+    "name": "BrewCoffee",
+    "bt_task": "The robot task is to brew coffee. The behavior logic of a robot should be as follows. The coffee beans are stored in a open jar on the countertop, and the water source is the sink in the kitchen.An clean and empty bottle is near the sink. A coffee machine and a mug are also on the countertop. The robot needs to use the coffee machine to brew the coffee using the coffee beans and water, and then pour the brewed coffee into the mug. The goal is to ensure that the coffee is brewed and contained in the mug. The robot has two grippers, which one gripper can hold one object at a time.",
+    "bt_xml_path": "./BTGenDataset/good/xml/7.xml",
+    "action_node": {
+        "Move_to_sink": {
+            "description": "The robot moves to the location of the sink.",            
+            "precondition": "None"
+        },
+        "Grasp_water_bottle":{
+            "description": "The robot grasps and lifts the water bottle near the sink with its one gripper.",            
+            "precondition": "None"
+        },
+        "Fill_water_bottle": {
+            "description": "The robot turns on the sink switch, fills the bottle which is in its gripper with the flowing water until the bottle is full, and then turns off the sink switch.",            
+            "precondition": "None"
+        },
+        "Move_to_coffee_beans_jar": {
+            "description": "The robot moves to the location of the coffee beans jar.",            
+            "precondition": "None"
+        },
+        "Move_to_coffee_machine": {
+            "description": "The robot moves to the location of the coffee machine.",
+            "precondition": "None"
+        },
+        "Pour_coffee_beans": {
+            "description": "The robot pours the coffee beans which are in its gripper into the coffee machine. The coffee machine's power state need be off.",            
+            "precondition": "None"
+        },
+        "Pour_water_into_coffee_machine": {
+            "description": "The robot pours the water from the bottle which is in its gripper into the coffee machine.",            
+            "precondition": "None"
+        },
+        "Start_coffee_brewing": {
+            "description": "The robot turns on the coffee machine power switch.",            
+            "precondition": "None"
+        },
+        "Wait_for_coffee_brew": {
+            "description": "The robot waits for until the coffee machine gets the brewed coffee.",            
+            "precondition": "None"
+        },
+        "Move_to_mug": {
+            "description": "The robot moves to the location of the mug.",            
+            "precondition": "None"
+        },
+        "Grasp_mug":{
+            "description": "The robot grasps and lifts the mug.",            
+            "precondition": "None"
+        },
+        "Pour_coffee_into_mug": {
+            "description": "The robot pours the brewed coffee from the coffee machine into the mug.",            
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "is_near_coffee_beans_jar?": "Check if the robot is near the coffee beans jar. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "is_near_sink?": "Check if the robot is near the sink. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "water_in_bottle?": "Check if the bottle is filled with water.",
+        "is_near_coffee_machine?": "Check if the robot is near the coffee machine. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "coffee_beans_in_machine?": "Check if the coffee beans have been poured into the coffee machine.",
+        "water_in_machine?": "Check if the water has been poured into the coffee machine.",
+        "brewing_started?": "Check if the power state of the coffee machine is on and start brewing coffee based on ingredients such as coffee beans and water.",
+        "brewing_completed?": "Check if the coffee brewing process of coffee machine has completed and the content of the coffee machine is brewed coffee.",
+        "mug_in_gripper?": "Check if the mug is in the robot's gripper.",
+        "coffee_in_mug?": "Check if the brewed coffee has been into the mug."
+    }
+}

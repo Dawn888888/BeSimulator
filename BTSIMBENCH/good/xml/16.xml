@@ -1,0 +1,62 @@
+<Sequence class="SequenceNode" instance_name="Heat_Chicken_Soup_Successfully">
+    <Sequence class="SequenceNode" instance_name="Transfer_Soup_To_Bowl">
+        <Fallback class="FallbackNode" instance_name="Move_to_carton">
+            <Condition class="Is_near_carton?" instance_name="Is_near_carton?"></Condition>
+            <Action class="Move_to_carton" instance_name="Move_to_carton"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Open_carton">
+            <Condition class="Carton_opened?" instance_name="Carton_opened?"></Condition>
+            <Action class="Open_carton" instance_name="Open_carton"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Pour_soup_to_bowl">
+            <Condition class="Soup_in_bowl?" instance_name="Soup_in_bowl?"></Condition>
+            <Sequence class="SequenceNode" instance_name="Pour_soup_to_bowl">
+                <Action class="Pick_up_Carton" instance_name="Pick_up_Carton"></Action>
+                <Action class="Pour_soup_to_bowl" instance_name="Pour_soup_to_bowl"></Action>
+                <Action class="Place_Carton_to_Countertop" instance_name="Place_Carton_to_Countertop"></Action>
+            </Sequence>            
+        </Fallback>
+    </Sequence>
+    <Sequence class="SequenceNode" instance_name="Heat_Chicken_Soup_Microwave">
+        <Sequence class="SequenceNode" instance_name="Prepare_Microwave_Settings">
+            <Fallback class="FallbackNode" instance_name="pick_up_bowl">
+                <Condition class="Bowl_in_gripper?" instance_name="Bowl_in_gripper?"></Condition>
+                <Action class="Pick_up_bowl" instance_name="Pick_up_bowl"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Move_to_microwave">
+                <Condition class="Is_near_microwave?" instance_name="Is_near_microwave?"></Condition>
+                <Action class="Move_to_microwave" instance_name="Move_to_microwave"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Open_Microwave">
+                <Condition class="Microwave_door_opened?" instance_name="Microwave_door_opened?"></Condition>
+                <Action class="Open_Microwave" instance_name="Open_Microwave"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Place_bowl_in_microwave">
+                <Condition class="Bowl_in_microwave?" instance_name="Bowl_in_microwave?"></Condition>
+                <Action class="Place_bowl_in_microwave" instance_name="Place_bowl_in_microwave"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Close_Microwave">
+                <Condition class="Microwave_door_closed?" instance_name="Microwave_door_closed?"></Condition>
+                <Action class="Close_Microwave" instance_name="Close_Microwave"></Action>
+            </Fallback>
+        </Sequence>
+        <Sequence class="SequenceNode" instance_name="Execute_Heating_Process">
+            <Fallback class="FallbackNode" instance_name="TurnOn_microwave">
+                <Condition class="Microwave_is_heating?" instance_name="Microwave_is_heating?"></Condition>
+                <Action class="TurnOn_microwave" instance_name="TurnOn_microwave"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Wait_for_microwave">
+                <Condition class="Soup_heated?" instance_name="Soup_heated?"></Condition>
+                <Action class="Wait_for_microwave" instance_name="Wait_for_microwave"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Open_Microwave">
+                <Condition class="Microwave_door_opened?" instance_name="Microwave_door_opened?"></Condition>
+                <Action class="Open_Microwave" instance_name="Open_Microwave"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Remove_bowl_from_microwave">
+                <Condition class="Bowl_removed_from_microwave?" instance_name="Bowl_removed_from_microwave?"></Condition>
+                <Action class="Remove_bowl_from_microwave" instance_name="Remove_bowl_from_microwave"></Action>
+            </Fallback>
+        </Sequence>
+    </Sequence>
+</Sequence>

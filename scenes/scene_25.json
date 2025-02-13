@@ -1,0 +1,135 @@
+[
+    {
+        "agents": {
+            "roasting_robot": {
+                "type": "service_robot",
+                "position": [
+                    2.0,
+                    2.0,
+                    1.0
+                ],
+                "size": 1.2,
+                "gripper_content": [],
+                "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                "gripper_contact_range": 1.0
+            }
+        },
+        "objects": {
+            "casserole": {
+                "type": "casserole",
+                "position": [
+                    4.0,
+                    4.0,
+                    0.5
+                ],
+                "size": 0.8,
+                "setting": "This casserole is used for cooking.",
+                "content": [
+                    [
+                        "ham"
+                    ]
+                ]
+            },
+            "cabinet": {
+                "type": "cabinet",
+                "position": [
+                    6.0,
+                    6.0,
+                    0.5
+                ],
+                "size": 1.0,
+                "setting": "This cabinet does not have a door. ",
+                "content": [
+                    [
+                        "honey_jar"
+                    ],
+                    [
+                        "aluminum_foil"
+                    ]
+                ]
+            },
+            "honey_jar": {
+                "type": "jar",
+                "position": [
+                    6.0,
+                    6.0,
+                    1.5
+                ],
+                "size": 0.2,
+                "content": [
+                    [
+                        "honey"
+                    ]
+                ],
+                "honey_jar_state": "Open"
+            },
+            "aluminum_foil": {
+                "type": "aluminum_foil",
+                "position": [
+                    6.3,
+                    6.3,
+                    1.5
+                ],
+                "size": 0.8
+            },
+            "oven": {
+                "type": "oven",
+                "position": [
+                    8.0,
+                    8.0,
+                    1.0
+                ],
+                "size": 1.0,
+                "setting": "This oven has a manual door opening oven. It automatically stops working when food has been roasted.",
+                "door_state": "Closed",
+                "work_status": "Off",
+                "content": []
+            },            
+            "ham": {
+                "type": "ham",
+                "position": [
+                    4.0,
+                    4.0,
+                    1.0
+                ],
+                "size": 0.6,
+                "cooked": false
+            }
+        },
+        "relationship": {
+            "ham_wrapped_by_aluminum_foil": false,
+            "ham_covered_by_honey": false
+        },
+        "environment": {},
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affiliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+            "content": "the content in the corresponding object. It is a nested list that represent the affiliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "door_state": "the state of the oven door, e.g., 'Open' or 'Closed'",  
+            "work_status": "the working state of the oven, e.g., 'On' or 'Off'",
+            "cooked": "whether the food is cooked or not, e.g., True or False",
+            "ham_wrapped_by_aluminum_foil":"whether the ham is wrapped by aluminum_foil, e.g., True or False",
+            "ham_covered_by_honey":"whether the ham is covered by honey, e.g., True or False",
+            "honey_jar_state": "the state of the honey jar, e.g., 'Open' or 'Closed'"
+        },
+        "state_type":{
+            "type": "string",
+            "position": "float list",
+            "size": "float", 
+            "gripper_content": "string list", 
+            "setting": "string",
+            "gripper_contact_range": "float",  
+            "content": "string list",
+            "door_state": "string",  
+            "work_status": "string",
+            "cooked": "bool",
+            "ham_wrapped_by_aluminum_foil": "bool",
+            "ham_covered_by_honey": "bool",
+            "honey_jar_state": "string"
+        }
+    }
+]

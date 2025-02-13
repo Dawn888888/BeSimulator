@@ -1,0 +1,68 @@
+{
+    "id": 16,
+    "name": "CookSoup",
+    "bt_task": "The robot task is to heat chicken soup. The behavior logic of a robot should be as follows. The scene of the task is the kitchen. The chicken soup is contained in a carton placed on the countertop. The carton is closed initially. The bowl and microwave are both on the countertop and near the carton. The robot needs to open the carton, pour the chicken soup from the carton to the bowl, then use the microwave to heat the soup. The goal is to ensure that the chicken soup is contained in the bowl and heated.",
+    "bt_xml_path": "./BTGenDataset/good/xml/16.xml",
+    "action_node": {
+        "Move_to_carton": {
+            "description": "The robot moves to the location of the carton.",            
+            "precondition": "None"
+        },
+        "Pick_up_Carton":{
+            "description": "The robot steadily grasps and lifts the carton with it one gripper.",
+            "precondition": "None"
+        },
+        "Place_Carton_to_Countertop":{
+            "description": "The robot steadily places the carton that is held by robot gripper to the countertop.",
+            "precondition": "None"
+        },
+        "Pour_soup_to_bowl": {
+            "description": "The robot pour the chicken soup from the carton that is held by robot gripper to the bowl.",            
+            "precondition": "None"
+        },
+        "Open_Microwave": {
+            "description": "The robot opens the microwave door with one gripper.",            
+            "precondition": "None"
+        },
+        "Close_Microwave": {
+            "description": "The robot closes the microwave door with one gripper.",
+            "precondition": "None"
+        },
+        "Pick_up_bowl": {
+            "description": "The robot grasps and lifts the bowl with its gripper.",            
+            "precondition": "None"
+        },
+        "Move_to_microwave": {
+            "description": "The robot moves to the location of the microwave.",            
+            "precondition": "None"
+        },
+        "Place_bowl_in_microwave": {
+            "description": "The robot extends its arm, places the bowl that is held by gripper to the center inside the microwave, then releases its arm and retracts its arm.",            
+            "precondition": "None"
+        },
+        "TurnOn_microwave": {
+            "description": "The robot turns on the microwave switch to heat.",            
+            "precondition": "None"
+        },
+        "Wait_for_microwave": {
+            "description": "The robot waits for the microwave and finally the microwave completes the heating process.",
+            "precondition": "None"
+        },
+        "Remove_bowl_from_microwave": {
+            "description": "The robot extends its arm to the microwave and takes the bowl out from the microwave.",            
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "Is_near_carton?": "Check if the robot is positioned near the carton. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Soup_in_bowl?": "Check if the chicken soup is contained in the bowl.",
+        "Is_near_microwave?": "Check if the robot is positioned near the microwave. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Bowl_in_microwave?": "Check if the bowl with chicken soup is placed inside the microwave.",
+        "Microwave_is_heating?": "Check if the microwave has been set to heat the chicken soup.",
+        "Soup_heated?": "Check if the chicken soup has been heated.",
+        "Bowl_removed_from_microwave?": "Check if the bowl with heated chicken soup is removed from the microwave.",
+        "Bowl_in_gripper?":"Check if the bowl is in the robot's gripper.",
+        "Microwave_door_opened?": "Check if the microwave door is opened.",
+        "Microwave_door_closed?": "Check if the microwave door is closed."
+    }
+}

@@ -1,0 +1,48 @@
+<Sequence class="SequenceNode" instance_name="Defrost Chicken Water">
+    <Sequence class="SequenceNode" instance_name="Retrieve_and_place_chicken">
+        <Sequence class="SequenceNode" instance_name="Retrieve_frozen_chicken">
+            <Fallback class="FallbackNode" instance_name="Move_to_refrigerator">
+                <Condition class="Is_near_refrigerator?" instance_name="Is_near_refrigerator?"></Condition>
+                <Action class="Move_to_refrigerator" instance_name="Move_to_refrigerator"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Open_refrigerator">
+                <Condition class="Refrigerator_door_open?" instance_name="Refrigerator_door_open?"></Condition>
+                <Action class="Open_refrigerator" instance_name="Open_refrigerator"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Close_refrigerator">
+                <Condition class="Refrigerator_door_closed?" instance_name="Refrigerator_door_closed?"></Condition>
+                <Action class="Close_refrigerator" instance_name="Close_refrigerator"></Action>
+            </Fallback>
+        </Sequence>
+        <Sequence class="SequenceNode" instance_name="Place_chicken_in_bowl">
+            <Fallback class="FallbackNode" instance_name="Move_to_countertop">
+                <Condition class="Is_near_countertop?" instance_name="Is_near_countertop?"></Condition>
+                <Action class="Move_to_countertop" instance_name="Move_to_countertop"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Place_chicken_in_bowl">
+                <Condition class="Chicken_in_bowl?" instance_name="Chicken_in_bowl?"></Condition>
+                <Action class="Place_chicken_in_bowl" instance_name="Place_chicken_in_bowl"></Action>
+            </Fallback>
+        </Sequence>
+    </Sequence>
+    <Fallback class="FallbackNode" instance_name="Defrost_chicken">
+        <Condition class="Chicken_is_not_Frozen?" instance_name="Chicken_is_not_Frozen?"></Condition>
+        <Sequence class="SequenceNode" instance_name="Defrost_chicken">
+            <Fallback class="FallbackNode" instance_name="Fill_Water">
+                <Condition class="Bowl_with_water?" instance_name="Bowl_with_water?"></Condition>
+                <Sequence class="SequenceNode" instance_name="Fill_bowl_with_water">
+                    <Fallback class="FallbackNode" instance_name="Pick_up_bowl">
+                        <Condition class="Bowl_in_gripper?" instance_name="Bowl_in_gripper?"></Condition>
+                        <Action class="Pick_up_bowl" instance_name="Pick_up_bowl"></Action>
+                    </Fallback>
+                    <Fallback class="FallbackNode" instance_name="Move_to_sink">
+                        <Condition class="Is_near_sink?" instance_name="Is_near_sink?"></Condition>
+                        <Action class="Move_to_sink" instance_name="Move_to_sink"></Action>
+                    </Fallback>            
+                    <Action class="Fill_bowl_with_water" instance_name="Fill_bowl_with_water"></Action>
+                </Sequence>
+            </Fallback>
+            <Action class="Defrost_chicken" instance_name="Defrost_chicken"></Action>
+        </Sequence>
+    </Fallback>
+</Sequence>

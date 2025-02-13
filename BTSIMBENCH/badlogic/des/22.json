@@ -1,0 +1,25 @@
+{
+    "id": 22,
+    "name": "HangBikeOnTheWall",
+    "bt_task": "The robot task is to hang a bicycle on the wall using a bicycle rack. The behavior logic of a robot should be as follows. The bicycle is initially on the floor, and the bicycle rack is attached to a wall nail. The environment is set in a garage. The robot needs to move the bicycle from the floor and attach it to the bicycle rack. The goal is to ensure that the bicycle is securely attached to the bicycle rack on the wall.",
+    "bt_xml_path": "./BTGenDataset/good/xml/22.xml",
+    "action_node": {
+        "Move_to_bicycle": {
+            "description": "The robot moves to the location of the bicycle.",
+            "precondition": "None"
+        },
+        "Move_to_rack": {
+            "description": "The robot moves to the location of the bicycle rackl.",
+            "precondition": "None"
+        },
+        "Attach_bicycle_to_rack": {
+            "description": "The robot adjusts the position of the bicycle that is held by robot gripper, and installs the bicycle to the bicycle rack on the wall securely. Then, the robor releases its gripper.",
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "Is_near_bicycle?": "Check if the robot is near the location of the bicycle. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Is_near_rack?": "Check if the robot is near the location of the bicycle rack. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "rack_attached_bicycle?": "Check if the bicycle is securely attached to the bicycle rack."
+    }
+}

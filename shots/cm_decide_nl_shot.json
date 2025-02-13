@@ -1,0 +1,73 @@
+[
+    {
+        "states": {
+            "agents": {
+                "chef_robot": {
+                    "type": "kitchen_robot",
+                    "position": [
+                        3.0,
+                        1.0,
+                        1.0
+                    ],
+                    "size": 1.6,
+                    "gripper_content": [
+                        [
+                            "knife"
+                        ]
+                    ],
+                    "gripper_contact_range": 1.0,
+                    "setting":"Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously."
+                }
+            },
+            "objects": {
+                "cuttingboard": {
+                    "type": "cuttingboard",
+                    "position": [
+                        0.0,
+                        -1.0,
+                        0.4
+                    ],
+                    "size": 0.5
+                },
+                "carrots": {
+                    "type": "carrots",
+                    "position": [
+                        3.0,
+                        1.1,
+                        0.9
+                    ],
+                    "size": 0.2
+                },
+                "knife": {
+                    "type": "knife",
+                    "position": [
+                        3.0,
+                        1.0,
+                        0.4
+                    ],
+                    "size": 0.3
+                }
+            },
+            "relationship": {},
+            "environment": {}
+        },
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_content": "the content in the gripper of the robot. It is a list. e.g., ['kettle'], []",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+            "setting":"the role setting of the robot or object"
+        },
+        "agent_task": "The robot task is to use kitchen knife and cutting board tools to cut carrot. If the robot does not hold knife, then it should first get the knife, then place the carrots on the cutting board and cut the carrots.",
+        "conditon_name": "knife_in_gripper?",
+        "condition_des": "Check whether the knife is in the robot's gripper.",
+        "corestates": [
+            "agents-chef_robot-gripper_content"
+        ],
+        "output": {
+            "result": true,
+            "thought": "according to the current world state, the value of the state 'gripper_content' is [['knife']]. It means the robot has a knife in its gripper, so the given condition 'knife_in_gripper?' is met."
+        }
+    }
+]

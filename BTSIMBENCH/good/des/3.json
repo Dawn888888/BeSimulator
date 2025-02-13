@@ -1,0 +1,95 @@
+{
+    "id": 3,
+    "name": "AssembleFurniture",
+    "bt_task": "The robot task is to assemble a desk. The action logic of a robot should be as follows. The desk top, desk brackets, and four desk legs are all on the floor in the living room. Robot should assemble the desk by attaching the desk brackets to the desk top and then attaching each of the four desk legs to the desk bracket. The goal is to ensure that the desk is fully assembled with all legs attached to the desk bracket, which is in turn attached to the desk top. The robot has two grippers, which one gripper can hold one object at a time.",
+    "bt_xml_path": "./BTGenDataset/good/xml/3.xml",
+    "action_node": {
+        "Move_to_desk_top": {
+            "description": "The robot moves to the location of the desk top.",
+            "precondition": "None"
+        },
+        "Pick_up_desk_top": {
+            "description": "The robot grasps and lifts the desk top with its gripper.",
+            "precondition": "None"
+        },
+        "Move_to_desk_brackets": {
+            "description": "The robot moves to the location of the desk brackets.",
+            "precondition": "None"
+        },
+        "Pick_up_desk_brackets": {
+            "description": "The robot grasps and lifts the desk brackets with its gripper.",
+            "precondition": "None"
+        },
+        "Attach_desk_brackets_to_desk_top": {
+            "description": "The robot attaches desk brackets in its gripper to the desk top. Then robot holds the desp top with the attached desk brackets using one gripper.",
+            "precondition": "None"
+        },
+        "Move_to_desk_leg_1": {
+            "description": "The robot moves to the location of the desk_leg_1.",
+            "precondition": "None"
+        },
+        "Pick_up_desk_leg_1": {
+            "description": "The robot grasps and lifts the desk_leg_1 with its one gripper.",
+            "precondition": "None"
+        },
+        "Attach_desk_leg_1_to_desk_bracket": {
+            "description": "The robot attaches desk_leg_1 in its gripper to the desk bracket. Then robot holds the desp top with the attached desk brackets and desk legs using one gripper.",
+            "precondition": "None"
+        },
+        "Move_to_desk_leg_2": {
+            "description": "The robot moves to the location of the desk_leg_2.",
+            "precondition": "None"
+        },
+        "Pick_up_desk_leg_2": {
+            "description": "The robot grasps and lifts desk_leg_2 with its one gripper.",
+            "precondition": "None"
+        },
+        "Attach_desk_leg_2_to_desk_bracket": {
+            "description": "The robot attaches desk_leg_2 in its gripper to the desk bracket. Then robot holds the desp top with the attached desk brackets and desk legs using one gripper.",
+            "precondition": "None"
+        },
+        "Move_to_desk_leg_3": {
+            "description": "The robot moves to the location of the desk_leg_3.",
+            "precondition": "None"
+        },
+        "Pick_up_desk_leg_3": {
+            "description": "The robot grasps and lifts the desk_leg_3 with its one gripper.",
+            "precondition": "None"
+        },
+        "Attach_desk_leg_3_to_desk_bracket": {
+            "description": "The robot attaches desk_leg_3 in its gripper to the desk bracket. Then robot holds the desp top with the attached desk brackets and desk legs using one gripper.",
+            "precondition": "None"
+        },
+        "Move_to_desk_leg_4": {
+            "description": "The robot moves to the location of the desk_leg_4.",
+            "precondition": "None"
+        },
+        "Pick_up_desk_leg_4": {
+            "description": "The robot grasps and lifts the desk_leg_4 with its one gripper.",
+            "precondition": "None"
+        },
+        "Attach_desk_leg_4_to_desk_bracket": {
+            "description": "The robot attaches desk_leg_4 in its gripper to the desk bracket. Then robot holds the desp top with the attached desk brackets and desk legs using one gripper.",
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "isNearDesktop?": "Check if the robot is near the location of desk_top. Require a distance of less than the gripper contact range to be considered near.",
+        "desk_top_in_gripper?": "Check if the robot holds desk_top in its gripper.",
+        "isNearDeskbrackets?": "Check if the robot is near the location of desk_brackets. Require a distance of less than the gripper contact range to be considered near.",
+        "desk_brackets_in_gripper?": "Check if the robot holds the desk brackets in its gripper.",
+        "desk_brackets_attached_to_desk_top?": "Check if the desk brackets are attached to the desk top.",
+        "isNearDeskleg1?": "Check if the robot is near the location of desk_leg_1. Require a distance of less than the gripper contact range to be considered near.",
+        "desk_leg_1_in_gripper?": "Check if the robot holds the desk_leg_1 in its gripper.",
+        "desk_leg_1_attached_to_desk_bracket?": "Check if the desk_bracket's attached_content includes the desk_leg_1.",
+        "isNearDeskleg2?": "Check if the robot is near the location of desk_leg_2. Require a distance of less than the gripper contact range to be considered near.",
+        "desk_leg_2_in_gripper?": "Check if the robot holds the desk_leg_2 in its gripper.",
+        "desk_leg_2_attached_to_desk_bracket?": "Check if the desk_bracket's attached_content includes the desk_leg_2.",
+        "isNearDeskleg3?": "Check if the robot is near the location of desk_leg_3. Require a distance of less than the gripper contact range to be considered near.",
+        "desk_leg_3_in_gripper?": "Check if the robot holds the desk_leg_3 in its gripper.",
+        "desk_leg_3_attached_to_desk_bracket?": "Check if the desk_bracket's attached_content includes the desk_leg_3.",
+        "isNearDeskleg4?": "Check if the robot is near the location of desk_leg_4. Require a distance of less than the gripper contact range to be considered near.",
+        "desk_leg_4_in_gripper?": "Check if the robot holds the desk_leg_4 in its gripper.",
+        "desk_leg_4_attached_to_desk_bracket?": "Check if the desk_bracket's attached_content includes the desk_leg_4."
+    }
+}

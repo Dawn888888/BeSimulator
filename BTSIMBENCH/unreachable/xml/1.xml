@@ -1,0 +1,30 @@
+<Sequence class="SequenceNode" instance_name="clean_pool_sequence">
+    <Fallback class="FallbackNode" instance_name="hold_brush">
+        <Condition class="Brush_in_gripper?" instance_name="Brush_in_gripper?"></Condition>
+        <Sequence class="SequenceNode" instance_name="hold_brush">
+            <Fallback class="FallbackNode" instance_name="move_to_brush">
+                <Condition class="IsNearBrush?" instance_name="IsNearBrush?"></Condition>
+                <Action class="move_to_brush" instance_name="move_to_brush"></Action>
+            </Fallback>
+            <Action class="pick_up_brush" instance_name="pick_up_brush"></Action>
+        </Sequence>
+    </Fallback>
+    <Fallback class="FallbackNode" instance_name="hold_detergent">
+        <Condition class="Detergent_in_gripper?" instance_name="Detergent_in_gripper?"></Condition>
+        <Sequence class="SequenceNode" instance_name="hold_detergent">
+            <Fallback class="FallbackNode" instance_name="move_to_detergent">
+                <Condition class="IsNearDetergent?" instance_name="IsNearDetergent?"></Condition>
+                <Action class="move_to_detergent" instance_name="move_to_detergent"></Action>
+            </Fallback>
+            <Action class="pick_up_detergent" instance_name="pick_up_detergent"></Action>
+        </Sequence>
+    </Fallback>
+    <Fallback class="FallbackNode" instance_name="move_to_pool">
+        <Condition class="IsNearPool?" instance_name="IsNearPool?"></Condition>
+        <Action class="move_to_pool" instance_name="move_to_pool"></Action>
+    </Fallback>
+    <Sequence class="SequenceNode" instance_name="clean_pool_sequence">
+        <Action class="ApplyDetergent" instance_name="ApplyDetergent"></Action>
+        <Action class="ScrubPoolWithBrush" instance_name="ScrubPoolWithBrush"></Action>
+    </Sequence>
+</Sequence>

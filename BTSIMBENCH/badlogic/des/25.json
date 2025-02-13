@@ -1,0 +1,67 @@
+{
+    "id": 25,
+    "name": "RoastHam",
+    "bt_task": "The robot task is to roast a ham. The robot has two grippers, which one gripper can hold one object at a time. The behavior logic of a robot should be as follows. Initially, the ham is inside a casserole, and a jar of honey is stored in a cabinet. The honey jar is filled with honey, and aluminum foil is also inside the cabinet. Robot needs to take the ham out of the casserole, cover it with honey, wrap it in aluminum foil, and then put it in the oven for baking. The goal is to ensure that the Virginia ham is cooked, covered with honey, and overlaid with aluminum foil.",
+    "bt_xml_path": "./BTGenDataset/good/xml/25.xml",
+    "action_node": {
+        "Move_to_casserole": {
+            "description": "The robot moves to the location of the casserole.",
+            "precondition": "None"
+        },
+        "Take_ham_from_casserole": {
+            "description": "The robot extends its a gripper, holds the ham inside the casserole and takes ham out of the casserole.",        
+            "precondition": "None"
+        },
+        "Move_to_cabinet": {
+            "description": "The robot moves to the location of the cabinet.",
+            "precondition": "None"
+        },
+        "Apply_honey_to_ham": {
+            "description": "The robot opens the honey jar that is in its gripper, and dumps honey onto the ham which is also in its gripper.",
+            "precondition": "None"
+        },
+        "Place_honey_jar_to_cabinet":{
+            "description": "The robot places the honey jar to the cabinet and then retract its gripper.",
+            "precondition": "None"
+        },
+        "Wrap_ham_with_aluminum_foil": {
+            "description": "The robot use the the aluminum foil in its gripper to completely wrap the ham also in its gripper.",
+            "precondition": "None"
+        },
+        "Move_to_oven": {
+            "description": "The robot moves to the location of the oven.",
+            "precondition": "None"
+        },
+        "Place_ham_in_oven": {
+            "description": "The robot puts the ham covered by the honey and wrapped by aluminum_foil in the oven, releases and retracts its gripper.",
+            "precondition": "The ham shoule be wrapped with aluminum foil."
+        },
+        "Open_Oven":{
+            "description": "The robot opens the oven door with one gripper.",
+            "precondition": "None"
+        },
+        "Close_Oven":{
+            "description": "The robot smoothly pushes the oven door closed.",
+            "precondition": "None"
+        },
+        "TurOn_Oven":{
+            "description": "The robot turns on the oven working switch to roast the objects inside the oven.",
+            "precondition": "None"
+        },
+        "Wait_for_ham_to_roast":{
+            "description": "The robot waits and finally the ham is completedly roasted.",
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "Is_near_casserole?": "Check if the robot is positioned near the casserole. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Ham_in_gripper?": "Check if the ham is in the robot's gripper.",
+        "Is_near_cabinet?": "Check if the robot is positioned near the cabinet. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "Honey_covered_ham?": "Check if the ham is covered with honey.",
+        "Foil_wrapped_ham?": "Check if the ham is wrapped with aluminum foil.",
+        "Is_near_oven?": "Check if the robot is positioned near the oven. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "OvenDoorOpen?":"Check if the oven door is open or not.",
+        "OvenDoorClose?":"Check if the oven door is closed or not.",
+        "Ham_is_cooked?":"Check if the ham is cooked or not."
+    }
+}

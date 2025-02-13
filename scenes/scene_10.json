@@ -1,0 +1,93 @@
+[
+    {
+        "agents": {
+            "maintenance_robot": {
+                "type": "service_robot",
+                "position": [
+                    2.0,
+                    2.0,
+                    1.0
+                ],
+                "size": 1.5,
+                "gripper_content": [],
+                "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                "gripper_contact_range": 1.0
+            }
+        },
+        "objects": {
+            "coffee_table": {
+                "type": "table",
+                "position": [
+                    4.0,
+                    4.0,
+                    0.5
+                ],
+                "size": 1.2
+            },
+            "table_lamp": {
+                "type": "lamp",
+                "position": [
+                    4.0,
+                    4.0,
+                    1.0
+                ],
+                "size": 0.5,
+                "attached_bulb": "broken_light_bulb"
+            },
+            "broken_light_bulb": {
+                "type": "light_bulb",
+                "position": [
+                    4.0,
+                    4.0,
+                    1.2
+                ],
+                "size": 0.1,
+                "intact": false
+            },
+            "new_light_bulb": {
+                "type": "light_bulb",
+                "position": [
+                    4.3,
+                    4.0,
+                    0.7
+                ],
+                "size": 0.1,
+                "intact": true
+            }
+        },
+        "relationship": {
+            "new_light_bulb_is_placed_on_table":true,
+            "broken_light_bulb_is_placed_on_table":false,
+            "table_lamp_is_placed_on_table":true
+        },
+        "environment": {},
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+            "content": "the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "attached_bulb": "the light bulb attached to the table lamp, e.g., 'broken_light_bulb' or 'new_light_bulb', or 'empty'",
+            "intact": "the condition of the light bulb, whether it is intact or broken, e.g., True or False",
+            "new_light_bulb_is_placed_on_table":"whether the new_light_bulb is placed on table, e.g., True or False",
+            "broken_light_bulb_is_placed_on_table":"whether the broken_light_bulb is placed on table, e.g., True or False",
+            "table_lamp_is_placed_on_table":"whether the table_lamp is placed on table, e.g., True or False"
+        },
+        "state_type":{
+            "type": "string",
+            "position": "float list",
+            "size": "float",
+            "gripper_content": "string list",
+            "setting": "string",
+            "gripper_contact_range": "float",  
+            "content":"string list",
+            "attached_bulb": "string",
+            "intact": "bool",
+            "new_light_bulb_is_placed_on_table": "bool",
+            "broken_light_bulb_is_placed_on_table": "bool",
+            "table_lamp_is_placed_on_table": "bool"
+        }
+    }
+]

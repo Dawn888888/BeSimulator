@@ -1,0 +1,16 @@
+<Sequence class="SequenceNode" instance_name="Empty_Ashtray_Process">
+    <Fallback class="FallbackNode" instance_name="Detect_ash_in_ashtray">
+        <Condition class="ashtray_has_no_ash?" instance_name="ashtray_has_no_ash?"></Condition>
+        <Sequence class="SequenceNode" instance_name="clean_ashtray">
+            <Fallback class="FallbackNode" instance_name="Pick_up_ashtray">
+                <Condition class="ashtray_in_gripper?" instance_name="ashtray_in_gripper?"></Condition>
+                <Action class="Pick_up_ashtray" instance_name="Pick_up_ashtray"></Action>
+            </Fallback>
+            <Fallback class="FallbackNode" instance_name="Move_to_garbage_can">
+                <Condition class="Is_near_garbage_can?" instance_name="Is_near_garbage_can?"></Condition>
+                <Action class="Move_to_garbage_can" instance_name="Move_to_garbage_can"></Action>
+            </Fallback>
+            <Action class="Empty_ashtray_into_garbage_can" instance_name="Empty_ashtray_into_garbage_can"></Action>
+        </Sequence>
+    </Fallback>
+</Sequence>

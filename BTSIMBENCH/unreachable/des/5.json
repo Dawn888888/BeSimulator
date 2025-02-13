@@ -1,0 +1,45 @@
+{
+    "id": 5,
+    "name": "BottleWine",
+    "bt_task": "The robot task is to bottle red wine. The behavior logic of a robot should be as follows. There is a wine bottle and cork. The wine bottle are initially placed on the countertop in the kitchen, and the cork are stored inside a cabinet in the kitchen. The cabinet is closed initially. An open wooden bucket is filled with red wine. The open bucket is also on the countertop. The robot needs to retrieve the cork from the cabinet, fill the wine bottle with red wine from the bucket and attach the cork to the wine bottle. The task goal is to ensure that the wine bottle is filled with red wine and has a cork attached.",
+    "bt_xml_path": "./BTGenDataset/good/xml/5.xml",
+    "action_node": {
+        "Move_to_cabinet": {
+            "description": "The robot moves to the location of the cabinet.",            
+            "precondition": "None"
+        },
+        "Open_cabinet": {
+            "description": "The robot grips the cabinet door handle, pulls it open smoothly, ensuring a safe and controlled motion.",            
+            "precondition": "None"
+        },
+        "Take_cork": {
+            "description": "The robot extends its one gripper into the opened cabinet, grasps the cork, and takes it out.",              
+            "precondition": "None"
+        },
+        "Move_to_bucket": {
+            "description": "The robot moves to the location of the bucket.",            
+            "precondition": "None"
+        },
+        "Pour_wine_into_bottle": {
+            "description": "The robot extends its one gripper to touch the wooden bucket, tilts it to put the flowing red wine into the bottle which is in its gripper, until the bottle is full, and then releases the wooden bucket.",             
+            "precondition": "None"
+        },
+        "Move_to_bottle": {
+            "description": "The robot moves to the location of the wine bottle.",            
+            "precondition": "None"
+        },
+        "Pick_up_bottle":{
+            "description": "The robot grasps and lifts the wine bottle with its one gripper.",
+            "precondition": "None"
+        }
+    },
+    "condition_node": {
+        "IsNearCabinet?": "Check if the robot is near the cabinet. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "cabinet_door_open?": "Check if the cabinet door is open.",
+        "cork_in_gripper?": "Check if the cork is in the robot's gripper.",
+        "IsNearBucket?": "Check if the robot is near the bucket. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "bottle_is_full?": "Check if the wine bottle is filled with red wine.",
+        "IsNearBottle?": "Check if the robot is near the wine bottle. Require a distance less than the gripper contact range of the robot to be considered near.",
+        "cork_attached?": "Check if the wine bottle has a cork attached."
+    }
+}

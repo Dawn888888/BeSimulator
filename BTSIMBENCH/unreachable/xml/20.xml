@@ -1,0 +1,15 @@
+<Sequence class="SequenceNode" instance_name="Fold Hand Towel">    
+    <Fallback class="FallbackNode" instance_name="Move_to_sofa">
+        <Condition class="Is_near_sofa?" instance_name="Is_near_sofa?"></Condition>
+        <Action class="Move_to_sofa" instance_name="Move_to_sofa"></Action>
+    </Fallback>
+    <Fallback class="FallbackNode" instance_name="Fold_Hand_Towel">
+        <Condition class="hand_towel_is_folded?" instance_name="hand_towel_is_folded?"></Condition>
+        <Sequence class="SequenceNode" instance_name="Fold_Hand_Towel">
+            <Fallback class="FallbackNode" instance_name="Grasp_hand_towel">
+                <Condition class="hand_towel_in_gripper?" instance_name="hand_towel_in_gripper?"></Condition>
+                <Action class="Grasp_hand_towel" instance_name="Grasp_hand_towel"></Action>
+            </Fallback>
+        </Sequence>
+    </Fallback>
+</Sequence>

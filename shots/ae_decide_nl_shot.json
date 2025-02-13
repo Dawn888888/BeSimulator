@@ -1,0 +1,259 @@
+[
+    {
+        "agent_task": "The robot task is to use kitchen knife and cutting board tools to cut carrot. If the robot does not hold a knife, then it should first get the knife, then place the carrots on the cutting board and cut the carrots.",
+        "action": {
+            "action_class": "cut_carrots",
+            "precondition": "There are no task specific precondition, but please consider the realistic logic rationality additionally.",
+            "description": "Agent uses the knife that is held by its gripper to cut the vegetables.",
+            "action_instance": "cut_carrots"
+        },
+        "corestates": {
+            "can_robot_has_tool_to_cut_carrots": [
+                "agents-chef_robot-gripper_content"
+            ]
+        },
+        "output": {
+            "thought":"As denoted in the 'gripper_content' of 'chef_robot' in *Current States*, the 'gripper_content' is []. So robot has nothing in the gripper, which means robot has no tools to cut the carrots. So, the condition 'can_robot_has_tool' is false.",
+            "result": false
+        },
+        "states": {
+            "agents": {
+                "chef_robot": {
+                    "type": "kitchen_robot",
+                    "position": [
+                        3.0,
+                        1.0,
+                        1.0
+                    ],
+                    "gripper_content": [],
+                    "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                    "gripper_contact_range": 1.0,
+                    "size": 1.2
+                }
+            },
+            "objects": {
+                "cuttingboard": {
+                    "type": "cuttingboard",
+                    "position": [
+                        0.0,
+                        -1.0,
+                        0.4
+                    ],
+                    "size": 0.5
+                },
+                "carrots": {
+                    "type": "carrots",
+                    "position": [
+                        3.0,
+                        1.1,
+                        0.9
+                    ],
+                    "size": 0.2
+                },
+                "knife": {
+                    "type": "knife",
+                    "position": [
+                        7.0,
+                        9.0,
+                        0.4
+                    ],
+                    "size": 0.3
+                }
+            },
+            "relationship": {},
+            "environment": {}
+        },
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5"
+        }
+    },
+    {
+        "agent_task": "The robot task is to put a fruit tray containing apple into the refrigerator. The behavioral logic of robot should be as follows. The fruit tray is on the countertop in the kitchen, with an apple inside. There is a refrigerator in the kitchen. The robot needs to put the fruit tray into the refrigerator and turn off the refrigerator.",
+        "action": {
+            "action_class": "Pick_up_Fruit_Tray",
+            "precondition": "None",
+            "description": "The robot grasps and lifts the fruit_tray with it one gripper.",
+            "action_instance": "Pick_up_Fruit_Tray"
+        },
+        "corestates": {
+            "can_robot_has_free_gripper": [
+                "agents-home_robot-gripper_content",
+                "agents-home_robot-setting"
+            ]
+        },
+        "output": {
+            "thought": "As denoted in the 'setting' and 'gripper_content' of 'home_robot' in *Current States*, a robot has two grippers to hold two objects simultaneously. The robot is holding a knife according to the state 'gripper_content', so the robot has another free gripper. So, the condition 'can_robot_has_free_gripper' is true.",
+            "result":true
+        },
+        "states": {
+            "agents": {
+                "home_robot": {
+                    "type": "home_robot",
+                    "position": [
+                        1.0,
+                        1.0,
+                        0.7
+                    ],
+                    "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                    "gripper_contact_range": 0.5,
+                    "size": 1.2,
+                    "gripper_content": [
+                        [
+                            "knife"
+                        ]
+                    ]
+                }
+            },
+            "objects": {
+                "fruit_tray": {
+                    "type": "fruit_tray",
+                    "position": [
+                        1.1,
+                        1.1,
+                        0.6
+                    ],
+                    "size": 0.2,
+                    "content": [
+                        [
+                            "apple"
+                        ]
+                    ]
+                },
+                "apple": {
+                    "type": "apple",
+                    "position": [
+                        1.1,
+                        1.1,
+                        0.7
+                    ],
+                    "size": 0.1
+                },
+                "knife": {
+                    "type": "knife",
+                    "position": [
+                        1.0,
+                        1.0,
+                        0.7
+                    ],
+                    "size": 0.1
+                },
+                "refrigerator": {
+                    "type": "refrigerator",
+                    "position": [
+                        5.0,
+                        5.0,
+                        1.0
+                    ],
+                    "size": 1.8,
+                    "door_status": "Closed",
+                    "content": []
+                },
+                "countertop": {
+                    "type": "countertop",
+                    "position": [
+                        1.1,
+                        1.1,
+                        0.5
+                    ],
+                    "size": 0.5
+                }
+            },
+            "relationship": {
+                "fruit_tray_on_countertop": true
+            },
+            "environment": {
+                "type": "kitchen"
+            }
+        },
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.6",
+            "content": "the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "door_status": "the status of the refrigerator, e.g., 'Open' or 'Closed'",
+            "fruit_tray_on_countertop": "whether the fruit tray is on the countertop or not, e.g., True or False"
+        }
+    },
+    {
+        "agent_task": "The task of the robot is to pour water into the bowl. The behavioral logic of robot should be as follows. The bowl is on the countertop in the kitchen. There is a tap in the kitchen. The robot needs to fetch the bowl and turn on the tap to receive water.",
+        "action": {
+            "action_class": "Get_water_from_tap_to_bowl",
+            "precondition": "None",
+            "description": "The robot extends the gripper which holds a bowl under the tap, the water flows into the bowl, and finally the robot retract the gripper.",
+            "action_instance": "Get_water_from_tap_to_bowl"
+        },
+        "corestates": {
+            "bowl_is_not_filled_with_water":[
+                "objects-bowl-filled_with_water"
+            ]
+        },
+        "output": {
+            "thought": "As denoted in the 'filled_with_water' of 'bowl' in *Current States*, the 'filled_with_water' state is false, so the bowl is not filled with water. So, the condition 'bowl_is_not_filled_with_water' is true.",
+            "result":true
+        },
+        "states": {
+            "agents": {
+                "home_robot": {
+                    "type": "home_robot",
+                    "position": [
+                        1.0,
+                        1.0,
+                        0.7
+                    ],
+                    "gripper_content": [
+                        [
+                            "bowl"
+                        ]
+                    ],
+                    "size": 1.2,
+                    "gripper_contact_range": 1.0,
+                    "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously."
+                }
+            },
+            "objects": {
+                "tap": {
+                    "type": "tap",
+                    "position": [
+                        1.0,
+                        1.0,
+                        0.8
+                    ],
+                    "size": 0.05,
+                    "open_close_state": "open"
+                },
+                "bowl": {
+                    "type": "bowl",
+                    "position": [
+                        1.1,
+                        1.1,
+                        1.8
+                    ],
+                    "size": 0.1,
+                    "filled_with_water": false
+                }
+            },
+            "relationship": {},
+            "environment": {
+                "type": "kitchen"
+            }
+        },
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.6",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "open_close_state": "the status of the tap, e.g., 'open' or 'closed'",
+            "filled_with_water": "whether the bowl is filled with water. e.g., false or true"
+        }
+    }
+]

@@ -1,0 +1,75 @@
+[
+    {
+        "agents": {
+            "robot": {
+                "type": "service_robot",
+                "position": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "size": 1.5,
+                "gripper_content": [],
+                "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                "gripper_contact_range": 1.0
+            }
+        },
+        "objects": {
+            "pesticide_atomizer": {
+                "type": "pesticide_atomizer",
+                "position": [
+                    2.0,
+                    2.0,
+                    0.5
+                ],
+                "size": 0.3,
+                "content": [
+                    [
+                        "pesticide"
+                    ]
+                ],
+                "pesticide_level": "Full"
+            },
+            "lawn": {
+                "type": "lawn",
+                "position": [
+                    6.0,
+                    6.0,
+                    0.0
+                ],
+                "size": 20.0,
+                "pesticide_applied": false,
+                "setting": "Lawn that needs to be sprayed with pesticide."
+            }
+        },
+        "relationship": {},
+        "environment": {
+            "terrain": "Flat",
+            "weather": "Sunny"
+        },
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3D position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+            "content": "the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "pesticide_level": "the level of pesticide in the atomizer, e.g., 'Full', 'Half', 'Empty'",
+            "pesticide_applied": "whether the lawn has been sprayed with pesticide, e.g., True or False"
+        },
+        "state_type": {
+            "type": "string",
+            "position": "float list",
+            "size": "float",
+            "gripper_content": "string list",
+            "setting": "string",
+            "gripper_contact_range": "float",
+            "content": "string",
+            "pesticide_level": "string",
+            "pesticide_applied": "bool",
+            "terrain": "string",
+            "weather": "string"
+        }
+    }
+]

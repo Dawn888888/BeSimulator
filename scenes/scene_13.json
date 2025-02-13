@@ -1,0 +1,75 @@
+[
+    {
+        "agents": {
+            "cleaning_robot": {
+                "type": "service_robot",
+                "position": [
+                    2.0,
+                    2.0,
+                    1.0
+                ],
+                "size": 1.2,
+                "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                "gripper_content": [],
+                "gripper_contact_range": 1.0
+            }
+        },
+        "objects": {
+            "mug": {
+                "type": "coffee_mug",
+                "position": [
+                    3.0,
+                    3.0,
+                    0.8
+                ],
+                "size": 0.1,
+                "content": [["coffee"]]
+            },
+            "sink": {
+                "type": "kitchen_sink",
+                "position": [
+                    3.0,
+                    4.0,
+                    0.8
+                ],
+                "size": 0.6
+            },
+            "dishwasher": {
+                "type": "dishwasher",
+                "position": [
+                    3.0,
+                    6.0,
+                    0.8
+                ],
+                "size": 0.8,
+                "setting": "This dishwasher is a manual door opening dishwasher.",
+                "content":[],
+                "door_status": "closed"
+            }
+        },
+        "relationship": {},
+        "environment": {
+            "type":"kitchen"
+        },
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",            
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+            "content": "the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "door_status": "the status of the door of the dishwasher, e.g., 'open' or 'closed'"
+        },
+        "state_type":{
+            "type": "string",
+            "position": "float list",
+            "size": "float",
+            "setting": "string",
+            "gripper_content": "string list",
+            "gripper_contact_range": "float",  
+            "content":"string list",
+            "door_status":"string"
+        }
+    }
+]

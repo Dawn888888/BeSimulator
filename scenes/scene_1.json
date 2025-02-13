@@ -1,0 +1,86 @@
+[
+    {
+        "agents": {
+            "cleaning_robot": {
+                "type": "service_robot",
+                "position": [
+                    2.0,
+                    2.0,
+                    1.0
+                ],
+                "size": 1.2,
+                "gripper_content": [],
+                "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                "gripper_contact_range": 1.0
+            }
+        },
+        "objects": {
+            "brush": {
+                "type": "brush",
+                "position": [
+                    3.5,
+                    4.0,
+                    0.5
+                ],
+                "size": 0.4
+            },
+            "detergent": {
+                "type": "detergent",
+                "position": [
+                    4.0,
+                    4.5,
+                    0.3
+                ],
+                "size": 0.5
+            },
+            "empty_pool": {
+                "type": "pool",
+                "position": [
+                    7.0,
+                    7.0,
+                    0.0
+                ],
+                "size": 10.0,
+                "clean_status": "stained",
+                "setting": "the pool is empty at the intial stage but it could be filled with water with opening the faucet of the pool.",
+                "faucet_status": "off",
+                "pool_rinsed": false,
+                "pool_scrubbed": false
+            }
+        },
+        "relationship": {
+            "detergent_applied_to_pool": false
+        },
+        "environment": {},
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3d position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+            "detergent_applied_to_pool": "whether the detergent has been applied to the pool, e.g., True or False",
+            "clean_status": "the cleanliness status of the pool, e.g., 'clean' or 'stained'",
+            "water_state": "the state of water in faucet or pool, e.g., 'on', 'off', 'no_water', 'filled'",
+            "pool_scrubbed": "whether the pool has been scrubbed with the brush, e.g., True or False",
+            "pool_rinsed": "whether the pool has been rinsed with water, e.g., True or False",
+            "pool_clean": "whether the pool is clean, e.g., True or False",
+            "faucet_status": "whether the faucet is turned on, e.g., on or off"
+        },
+        "state_type": {
+            "type": "string",
+            "position": "float list",
+            "size": "float",
+            "gripper_content": "string list",
+            "setting": "string",
+            "gripper_contact_range": "float",
+            "clean_status": "string",
+            "water_state": "string",
+            "detergent_applied_to_pool": "bool",
+            "pool_scrubbed": "bool",
+            "pool_rinsed": "bool",
+            "pool_clean": "bool",
+            "faucet_status": "string"
+        }
+    }
+]

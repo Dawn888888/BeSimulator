@@ -1,0 +1,34 @@
+<Sequence class="SequenceNode" instance_name="Retrieve_and_place_items">
+    <Sequence class="SequenceNode" instance_name="Take_jacket_and_sandals">
+        <Fallback class="FallbackNode" instance_name="Move_to_wardrobe">
+            <Condition class="Is_near_wardrobe?" instance_name="Is_near_wardrobe?"></Condition>
+            <Action class="Move_to_wardrobe" instance_name="Move_to_wardrobe"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Open_wardrobe_door">
+            <Condition class="wardrobe_door_open?" instance_name="wardrobe_door_open?"></Condition>
+            <Action class="Open_wardrobe_door" instance_name="Open_wardrobe_door"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Take_jacket_from_wardrobe">
+            <Condition class="jacket_in_gripper?" instance_name="jacket_in_gripper?"></Condition>
+            <Action class="Take_jacket_from_wardrobe" instance_name="Take_jacket_from_wardrobe"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Take_sandals_from_wardrobe">
+            <Condition class="sandals_in_gripper?" instance_name="sandals_in_gripper?"></Condition>
+            <Action class="Take_sandals_from_wardrobe" instance_name="Take_sandals_from_wardrobe"></Action>
+        </Fallback>
+    </Sequence>
+    <Sequence class="SequenceNode" instance_name="Arrange_bedroom_items">
+        <Fallback class="FallbackNode" instance_name="Move_to_bed">
+            <Condition class="Is_near_bed?" instance_name="Is_near_bed?"></Condition>
+            <Action class="Move_to_bed" instance_name="Move_to_bed"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Place_jacket_on_bed">
+            <Condition class="jacket_placed_on_bed?" instance_name="jacket_placed_on_bed?"></Condition>
+            <Action class="Place_jacket_on_bed" instance_name="Place_jacket_on_bed"></Action>
+        </Fallback>
+        <Fallback class="FallbackNode" instance_name="Place_sandals_on_floor">
+            <Condition class="sandals_placed_on_floor?" instance_name="sandals_placed_on_floor?"></Condition>
+            <Action class="Place_sandals_on_jacket" instance_name="Place_sandals_on_jacket"></Action>
+        </Fallback>
+    </Sequence>
+</Sequence>

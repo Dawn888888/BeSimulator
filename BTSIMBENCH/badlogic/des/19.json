@@ -1,0 +1,25 @@
+{
+    "id": 19,
+    "name": "EmptyAshtray",
+    "bt_task": "The robot task is to empty an ashtray. The behavior logic of a robot should be as follows. The ashtray, which contains ash, is on the breakfast table. The garbage can is on the floor in the kitchen. The robot needs to remove the ash from the ashtray and place them into the garbage can. The goal is to ensure that the ashtray is no longer filled with ash and that the ash should be inside the garbage can.",
+    "bt_xml_path": "../xml/19.xml",
+    "action_node": {
+        "Pick_up_ashtray": {
+            "description": "The robot grasps and lifts the ashtray with it one gripper.",            
+            "precondition": "None"
+        },
+        "Move_to_garbage_can": {
+            "description": "The robot moves to the location of the garbage can.",            
+            "precondition": "None"
+        },
+        "Empty_ashtray_into_garbage_can": {
+            "description": "The robot extend the gripper that holds the ashtray, dumps the ashtray and empties the ash inside the ashtray into the garbage can.",            
+            "precondition": "None"
+        }        
+    },
+    "condition_node": {
+        "ashtray_has_no_ash?": "Check if the ashtray doesnot have the ash.",
+        "ashtray_in_gripper?": "Check if the ashtray is in the robot's gripper.",
+        "Is_near_garbage_can?": "Check if the robot is near the garbage can in the kitchen. Require a distance less than the gripper contact range of the robot to be considered near."
+    }
+}

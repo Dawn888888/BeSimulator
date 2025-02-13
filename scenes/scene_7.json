@@ -1,0 +1,99 @@
+[
+    {
+        "agents": {
+            "coffee_brewing_robot": {
+                "type": "service_robot",
+                "position": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "size": 1.5,
+                "gripper_content": [],
+                "setting": "Robot can only touch objects within the range of gripper contact. The robot has two grippers and thus the robot can hold two objects at most simultaneously.",
+                "gripper_contact_range": 1.0
+            }
+        },
+        "objects": {
+            "coffee_beans_jar": {
+                "type": "jar",
+                "position": [
+                    4.0,
+                    1.0,
+                    1.0
+                ],
+                "size": 0.25,
+                "setting": "This jar is open and contains coffee beans.",
+                "content":[["beans"]]
+            },
+            "sink": {
+                "type": "sink",
+                "position": [
+                    6.0,
+                    4.0,
+                    1.0
+                ],
+                "size": 1.0,
+                "setting": "This sink can provide water when turned on.",
+                "sink_state": "Off"
+            },
+            "water_bottle": {
+                "type": "bottle",
+                "position": [
+                    6.0,
+                    4.2,
+                    1.0
+                ],
+                "size": 0.5,
+                "content":[]
+            },
+            "coffee_machine": {
+                "type": "coffee_machine",
+                "position": [
+                    3.5,
+                    2.5,
+                    1.0
+                ],
+                "size": 0.7,
+                "setting": "This machine can brew coffee when it has water and coffee beans.",
+                "power_state": "Off",
+                "content":[]
+            },
+            "mug": {
+                "type": "mug",
+                "position": [
+                    6.8,
+                    2.5,
+                    1.0
+                ],
+                "size": 0.2,
+                "setting": "This mug is empty and ready to receive brewed coffee.",
+                "content":[]
+            }
+        },
+        "relationship": {},
+        "environment": {},
+        "state_description": {
+            "type": "the type of the robot or object, e.g., robot, cube, table, etc.",
+            "position": "the 3D position of the robot or object, e.g., [4.0, 6.0, -2.0]",
+            "size": "the size of the robot or object, e.g., size of an apple is 0.1",
+            "gripper_content": "the content in the gripper of the robot. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",            
+            "setting": "the role setting of the robot or object, e.g., 'Robot can only touch objects within the range of gripper contact.'",
+            "gripper_contact_range": "the range of robot gripper contact, e.g., 0.5",
+            "sink_state": "the state of the sink, e.g., 'On' or 'Off'",
+            "content":"the content in the corresponding object. It is a nested list that represent the affliation relationship of objects. e.g., [], [['bowl']], [['fruit_tray',['apple']]]",
+            "power_state": "the power state of the coffee machine, e.g., 'On' or 'Off'"
+        },
+        "state_type":{
+            "type": "string",
+            "position": "float list",
+            "size": "float",
+            "gripper_content": "string list",
+            "setting": "string",
+            "sink_state": "string",
+            "gripper_contact_range": "float",  
+            "content":"string list",
+            "power_state": "string"
+        }
+    }
+]
