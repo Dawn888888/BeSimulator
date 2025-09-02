@@ -1,5 +1,5 @@
-<h1 align="center">BeSimulator: A Large Language Model Powered Behavior
-Simulator</h1>
+<h1 align="center">BeSimulator: A Large Language Model Powered Text-based 
+Behavior Simulator</h1>
 
 
 <div align="center">
