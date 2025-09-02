@@ -3,7 +3,7 @@ Simulator</h1>
 
 <div align="center">
 [![arXiv](https://img.shields.io/badge/arXiv-2409.15865-b31b1b.svg)](https://arxiv.org/abs/2409.15865)
-[![Python](https://img.shields.io/badge/python-3.9-blue)
+[![Python](https://img.shields.io/badge/python-3.9-blue)]
 </div>
 
 A modular LLM-powered framework designed to efficiently simulate complex robotic behavior architectures, such as Behavior Trees (BTs), Finite State Machines (FSMs), and Hierarchical Task Networks (HTNs), as an effort towards behavior simulation in text-based environments.
@@ -30,7 +30,6 @@ A modular LLM-powered framework designed to efficiently simulate complex robotic
 ## ⚙️ Configuration
 
 Before running BeSimulator, you must set up your API keys.
-
     ```bash
     export OPENAI_API_KEY=<your_api_key>
     ```
@@ -41,8 +40,9 @@ Before running BeSimulator, you must set up your API keys.
 
 Here is a basic example to run a Behavior Tree (BT) simulation using the DeepSeek model.
 
-```bash
-python main.py --llm_model deepseek-chat --category good --run_task_id 1
+    ```bash
+    python main.py --llm_model deepseek-chat --category good --run_task_id 1
+    ```
 
 ## 📚 Citation
 If you use any of this work, it would be really nice if you could please cite 🥺 :
