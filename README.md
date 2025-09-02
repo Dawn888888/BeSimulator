@@ -30,9 +30,9 @@ A modular LLM-powered framework designed to efficiently simulate complex robotic
 ## ⚙️ Configuration
 
 Before running BeSimulator, you must set up your API keys.
-    ```bash
-    export OPENAI_API_KEY=<your_api_key>
-    ```
+```
+export OPENAI_API_KEY=<your_api_key>
+```
 
 *Replace the placeholder text with your actual API keys.*
 
