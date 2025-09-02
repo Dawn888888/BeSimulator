@@ -1,10 +1,10 @@
 <h1 align="center">BeSimulator: A Large Language Model Powered Behavior
 Simulator</h1>
 
-<div align="center">
+<p align="center">
 [![arXiv](https://img.shields.io/badge/arXiv-2409.15865-b31b1b.svg)](https://arxiv.org/abs/2409.15865)
 [![Python](https://img.shields.io/badge/python-3.9-blue)]
-</div>
+</p>
 
 A modular LLM-powered framework designed to efficiently simulate complex robotic behavior architectures, such as Behavior Trees (BTs), Finite State Machines (FSMs), and Hierarchical Task Networks (HTNs), as an effort towards behavior simulation in text-based environments.
 
