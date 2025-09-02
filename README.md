@@ -46,10 +46,9 @@ export OPENAI_API_KEY=<your_api_key>
 ## 🚀 Quick Start
 
 Here is a basic example to run a Behavior Tree (BT) simulation using the DeepSeek model.
-
-    ```
-    python main.py --llm_model deepseek-chat --category good --run_task_id 1
-    ```
+```
+python main.py --llm_model deepseek-chat --category good --run_task_id 1
+```
 
 ## 📚 Citation
 If you use any of this work, it would be really nice if you could please cite 🥺 :
