@@ -27,15 +27,11 @@
         },
         "ApplyDetergent": {
             "precondition": null,
-            "description": "Robot applies detergent which is in its gripper to the pool surface."
+            "description": "Robot applies detergent which is in its gripper to the pool surface, and places the detergent on the floor."
         },
         "ScrubPoolWithBrush": {
             "precondition": null,
             "description": "Robot extends the gripper which holds a brush to the pool which has been applied with detergent, uses the brush to scrub the pool, then the pool is still not clean and is with detergent and stain."
-        },
-        "Place_brush_detergent_to_floor":{
-            "precondition": null,
-            "description": "Robot releases its gripper and places the brush and detergent on the floor."
         },
         "TurnOnFaucetandRinsePool": {
             "precondition": null,
